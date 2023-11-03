@@ -16,7 +16,7 @@ class AuthController extends Controller
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
             $user=auth()->user();
             if($user->hasRole('teacher'))
-                return response()->json(['status'=>'success','message'=>'Login Successfully','token'=>Auth::user()->createToken('MyApp')->plainTextToken,'user'=>$user]);
+                return response()->json(['status'=>'success','message'=>'Login Successfull','token'=>Auth::user()->createToken('MyApp')->plainTextToken,'user'=>$user]);
         }
         return response()->json(['status'=>'failed','message'=>'Invalid Credentials']);
     }

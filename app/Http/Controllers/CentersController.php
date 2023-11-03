@@ -6,6 +6,7 @@ use App\Mail\CenterAdded;
 use App\Models\Center;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 class CentersController extends Controller
@@ -53,7 +54,7 @@ class CentersController extends Controller
         $user->phone=$request->phone;
         $user->center_id=$center->id;
         $this->pwd=Str::random(6);
-        $user->password=$this->pwd;
+        $user->password=Hash::make($this->pwd);
         $user->assignRole('teacher');
         $user->save();
         Mail::to($user)->send(new CenterAdded($user->email,$this->pwd));
