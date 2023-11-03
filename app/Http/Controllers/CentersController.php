@@ -54,6 +54,7 @@ class CentersController extends Controller
         $user->center_id=$center->id;
         $this->pwd=Str::random(6);
         $user->password=$this->pwd;
+        $user->assignRole('teacher');
         $user->save();
         Mail::to($user)->send(new CenterAdded($user->email,$this->pwd));
         return view("centers.index")->with('success','Center Added successfully');
