@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts');
+    return view('login');
 });
 
 
@@ -33,6 +33,9 @@ Route::get("logout",[AuthController::class,'logout']);
 
 Route::post("updateIds",[StocksController::class,'updateIds']);
 
+
+
+Route::get("current",[StocksController::class,'current']);
 Route::get("assigned",[StocksController::class,'assigned']);
 
 

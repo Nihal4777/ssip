@@ -14,6 +14,17 @@ class StocksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function current(Request $request)
+    {
+        
+    }
+
+
+
+
+
+
     public function updateIds(Request $request)
     {
         DB::table('stocks')->whereIn('id',$request->ids)->update(['status' => 1]);
