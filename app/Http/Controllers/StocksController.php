@@ -31,6 +31,7 @@ class StocksController extends Controller
         {
             $stock=Stock::find($id);
             $c=Current::where(['item_name'=>$stock->item_name,'center_id'=>$stock->center_id])->count();
+            return $c;
             if($c){
                 DB::table('currents')->where(['item_name'=>$stock->item_name,'center_id'=>$stock->center_id])->increment('qnt', $stock->qnt);    
             }

@@ -16,6 +16,7 @@
           <th scope="col">Category</th>
           <th scope="col">Item</th>
           <th scope="col">Quantity</th>
+          <th scope="col">Updated on</th>
         </tr>
       </thead>
       <tbody>
