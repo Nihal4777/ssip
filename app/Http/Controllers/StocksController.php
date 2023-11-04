@@ -18,8 +18,8 @@ class StocksController extends Controller
 
     public function current(Request $request)
     {
-        $center_id=auth()->user();
-        $currents=Current::where('center_id',$center_id)->get();
+        $center=auth()->user();
+        $currents=Current::where('center_id',$center->center_id)->get();
         return view('current',compact('currents'));
     }
 
@@ -29,8 +29,19 @@ class StocksController extends Controller
     {
         foreach($request->ids as $id)
         {
-            
-
+            $stock=Stock::find($id);
+            $c=Current::where('item_name',$stock->item_name)->count();
+            if($c){
+                DB::table('current')->where(['item_name'=>$request->ids,'center_id',$stock->center_id])->increment(['qnt' => $stock->qnt]);
+            }
+            else{
+                $current=new Current;
+                $current->item_cat=$stock->item_cat;
+                $current->item_name=$stock->item_name;
+                $current->qnt=$stock->qnt;
+                $current->center_id=$stock->center_id;
+                $current->save();
+            }
         }
         DB::table('stocks')->whereIn('id',$request->ids)->update(['status' => 1]);
         return Redirect::back()->with('success','Status Updated');
