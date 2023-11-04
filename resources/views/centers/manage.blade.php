@@ -70,7 +70,7 @@
     </nav>
     <!-- End Table with hoverable rows -->
     <div class="card-body">
-      <h5 class="card-title"> <i class="bi bi-cart-check-fill"></i> Assigned Stock</h5>
+      <h5 class="card-title"> <i class="bi bi-cart-check-fill"></i> Invoices</h5>
       <!-- Table with hoverable rows -->
       <table class="table table-hover">
         <thead class="table-success">
@@ -110,7 +110,7 @@
 
     <!--Invoice---------  -->
     <div class="card-body">
-      <h5 class="card-title"> <i class="bi bi-calculator"></i>Invoices</h5>
+      <h5 class="card-title"> <i class="bi bi-calculator"></i>Assigned Stocks</h5>
 
       <!-- Table with hoverable rows -->
       <table class="table table-hover">
