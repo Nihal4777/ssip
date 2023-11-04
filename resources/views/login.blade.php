@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="login.css">
 </head>
 <style>
-
 body {
     margin: 0;
     padding: 0;
@@ -16,7 +15,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #fff;
+    background-color: burlywood;
 }
 
 .container {
@@ -37,7 +36,7 @@ body {
 }
 
 .login-container {
-    background-color: #483285;
+    background-color: beige;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
@@ -72,7 +71,7 @@ input[type="password"] {
 }
 
 button {
-    background-color: #4caf50;
+    background-color: #0d6ef0;
     color: white;
     padding: 10px 20px;
     font-size: 18px;
@@ -92,7 +91,7 @@ button:hover {
 
 .extra-links a {
     text-decoration: none;
-    color: #4caf50;
+    color: #0d6ef0;
     margin: 0 10px;
 }
 

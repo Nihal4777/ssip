@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Current;
 use App\Models\Stock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,16 +18,20 @@ class StocksController extends Controller
 
     public function current(Request $request)
     {
-        
+        $center_id=auth()->user();
+        $currents=Current::where('center_id',$center_id)->get();
+        return view('current',compact('currents'));
     }
-
-
-
 
 
 
     public function updateIds(Request $request)
     {
+        foreach($request->ids as $id)
+        {
+
+            
+        }
         DB::table('stocks')->whereIn('id',$request->ids)->update(['status' => 1]);
         return Redirect::back()->with('success','Status Updated');
     }

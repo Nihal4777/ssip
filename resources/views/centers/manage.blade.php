@@ -95,19 +95,7 @@
             <td>2016-05-25</td>
             <td>pending</td>  
             <td>
-              <button type="submit" class="btn btn-primary" > Cancle </button>
-            </td>
-          </tr>
-          <tr>
-            <th><i class="bi bi-cup-straw" style="color: tomato;"></i></th>
-            <th scope="row">1</th>
-            <td>Food</td>
-            <td>Brandon Jacob</td>
-            <td>28</td>
-            <td>2016-05-25</td>
-            <td>pending</td>  
-            <td>
-              <button type="submit" class="btn btn-primary" > Cancle </button>
+              <button type="submit" class="btn btn-primary" > Cancel </button>
             </td>
           </tr>
           
