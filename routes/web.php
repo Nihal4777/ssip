@@ -50,7 +50,7 @@ Route::group([ "middleware" => ["auth"]], function () {
         $states = Item::where('type',$id)->get();
         $data='<select class="form-control default-select wide state state-list"  name="item_name" required><option value="">-- Select Item --</option>';
         foreach ($states as $state){
-            $data.='<option value="'.$state->id.'">'.$state->name.'</option>';
+            $data.='<option value="'.$state->name.'">'.$state->name.'</option>';
         }
         $data.='</select>';
         return $data;

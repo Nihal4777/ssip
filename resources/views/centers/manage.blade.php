@@ -207,7 +207,7 @@
                     <label for="validationDefault04" class="form-label">Item Name</label>
                     <div class='items'>
                         <select class="form-select" name="item_name" id="validationDefault04" required>
-                        <option selected disabled value="">Item Name</option>
+                        <option selected disabled >Item Name</option>
                         </select>      
                 </div>
                     
