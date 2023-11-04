@@ -177,7 +177,7 @@
             <td>{{$d->center_name}}</td>
             <td>{{$d->area}}</td>
             <td>{{$i+1}}</td>
-            <td><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalopen">open</button></td>
+            <td><a href='{{"/centers/".$d->id}}' class="btn btn-primary">Show</a></td>
           </tr> 
           @endforeach
          

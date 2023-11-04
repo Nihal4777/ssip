@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Mail\CenterAdded;
 use App\Models\Center;
+use App\Models\Item;
+use App\Models\Stock;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -73,7 +75,10 @@ class CentersController extends Controller
      */
     public function show(Center $center)
     {
-        //
+        $user=auth()->user();
+        $cat=Item::get()->unique('type');
+        $Pstocks=Stock::where('status',0)->get();
+        return view('centers.manage',compact('center','user','cat','Pstocks'));
     }
 
     /**

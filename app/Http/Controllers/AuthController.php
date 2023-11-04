@@ -20,7 +20,30 @@ class AuthController extends Controller
         }
         return response()->json(['status'=>'failed','message'=>'Invalid Credentials']);
     }
-    public function logout()
+    public function login_attempt(Request $request)
+    {
+        $request->validate([
+            'email'=>'required|email',
+            "password"=>'required']);
+            $credentials = [
+                "email" => $request->email,
+                "password" => $request->password,
+            ];
+            if(Auth::attempt($credentials)) {
+                $user = auth()->user();
+                if(!$user->hasRole("admin")) {
+                    Auth::logout();
+                    $request->session()->flush();
+                    $request->session()->regenerateToken();
+                            
+                    return back()->withErrors([ "Invalid email and password" ]);
+                }
+                return redirect('/');
+            }
+            
+            return back()->withErrors([ "Invalid email and password" ]);
+    }
+    public function spaLogout()
     {
         request()->user()->currentAccessToken()->delete();
         return response()->json(['status'=>'success','message'=>"Logged Out Successfully"]);
@@ -36,5 +59,17 @@ class AuthController extends Controller
         $user->is_pwd_changed=true;
         $user->save();
         return response()->json(["status"=>'true','message'=>'Password changed successfully']);
+    }
+    public function login(Request $request)
+    {
+        return view('login');
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+
     }
 }

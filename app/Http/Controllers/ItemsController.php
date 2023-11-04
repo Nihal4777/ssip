@@ -53,7 +53,7 @@ class ItemsController extends Controller
      */
     public function show(Item $item)
     {
-        //
+  
     }
 
     /**

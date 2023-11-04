@@ -252,7 +252,7 @@
       </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-error-404.html">
+        <a class="nav-link collapsed" href="/logout">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>logout</span>
         </a>
@@ -292,7 +292,7 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>Aanganwadi Inventory Management</span></strong>. All Rights Reserved
     </div>
 
   </footer><!-- End Footer -->
