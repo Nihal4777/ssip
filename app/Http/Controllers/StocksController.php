@@ -135,7 +135,6 @@ class StocksController extends Controller
     }
 
 
-
     public function assigned()
     {
         $Pstocks=Stock::where(['status'=>0,'center_id'=>auth()->user()->center_id])->get();
