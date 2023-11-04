@@ -75,7 +75,7 @@ class CentersController extends Controller
      */
     public function show(Center $center)
     {
-        $user=auth()->user();
+        $user=User::where('center_id',$center->id)->first();
         $cat=Item::get()->unique('type');
         $Pstocks=Stock::where(['status'=>0,'center_id'=>$center->id])->get();
         return view('centers.manage',compact('center','user','cat','Pstocks'));
