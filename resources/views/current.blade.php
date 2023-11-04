@@ -27,14 +27,6 @@
           <td>{{$stocks->item_name}}</td>
           <td>{{$stocks->qnt}}</td>
           <td>{{$stocks->created_at}}</td>
-          <td>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="ids[]" value="{{$stocks->id}}" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Recieved
-              </label>
-            </div>
-          </td>
         </tr>
         @endforeach  
       </tbody>

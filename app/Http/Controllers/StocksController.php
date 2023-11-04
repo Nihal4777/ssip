@@ -32,7 +32,7 @@ class StocksController extends Controller
             $stock=Stock::find($id);
             $c=Current::where('item_name',$stock->item_name)->count();
             if($c){
-                DB::table('current')->where(['item_name'=>$request->ids,'center_id',$stock->center_id])->increment(['qnt' => $stock->qnt]);
+                DB::table('current')->where(['item_name'=>$request->ids,'center_id',$stock->center_id])->increment('qnt', $stock->qnt);
             }
             else{
                 $current=new Current;
