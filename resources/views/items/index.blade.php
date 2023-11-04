@@ -13,6 +13,7 @@
                 <thead>
                     <tr>
                         <th>Sr No</th>
+                        <th>Category</th>
                         <th>items Name</th>
                         <th>Action</th>
                     </tr>
@@ -21,14 +22,21 @@
                     @foreach ($categories as $index => $category)
                     <tr>
                         <td>{{$index+1}}</td>
+                        <td>{{$category->type}}</td>
                         <td>{{$category->name}}</td>
                         <td>
+                        <form action="{{route('items.destroy',$category->id)}}" method="delete">
+                            @method('DELETE')
                             <a href="{{route('items.edit',$category->id)}}" class='btn waves-effect waves-light btn-warning icon-btn btn-icon bs-tooltip' title="Edit">
                                 <i class='icofont icofont-edit'></i>
                             </a>
-                            <button href="{{""}}" class='btn waves-effect waves-light btn-danger icon-btn btn-icon bs-tooltip delete_btn' title="Delete" data-id="{{$category->id}}">
+                                <a href="" class='btn waves-effect waves-light btn-danger icon-btn btn-icon bs-tooltip' title="Delete">
+                                    <i class='icofont icofont-close'></i>
+                                </a>
+                        </form>
+                            {{-- <button href="{{""}}" class='btn waves-effect waves-light btn-danger icon-btn btn-icon bs-tooltip delete_btn' title="Delete" data-id="{{$category->id}}">
                                 <i class='icofont icofont-close'></i>
-                            </button>
+                            </button> --}}
                         </td>
                     </tr>
                     @endforeach
@@ -62,6 +70,7 @@
 var table;
 var id;
     $(document).ready(function(){
+        console.log("DDA");
         table = $("#table").DataTable({
             oLanguage: {
                 sEmptyTable: "No data found",
@@ -76,37 +85,37 @@ var id;
             ],
             
         });
-        $('table').on('click','.delete_btn',function(e){
-            id=$(e.currentTarget).data('id');
-            swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        $.ajax({
-                            method:'DELETE',
-                            url:"/items /"+id+'?_token={{csrf_token()}}',
-                            success:function(res){
-                                if(res.status==true)
-                                {
-                                    table
-                                    .row( $(e.target).parents('tr') )
-                                    .remove()
-                                    .draw();
-                                    swal("Deleted Successfully"); 
-                                }
-                            }
-                        });
-                    }
-                }).catch(function (error) 
-                {
-                    swal("Could not change", error.statusText, "error"); 
-                });;
-        });
+        // $('table').on('click','.delete_btn',function(e){
+        //     id=$(e.currentTarget).data('id');
+        //     swal({
+        //         title: "Are you sure?",
+        //         text: "Once deleted, you will not be able to recover this!",
+        //         icon: "warning",
+        //         buttons: true,
+        //         dangerMode: true,
+        //         })
+        //         .then((willDelete) => {
+        //             if (willDelete) {
+        //                 $.ajax({
+        //                     method:'DELETE',
+        //                     url:"/items /"+id+'?_token={{csrf_token()}}',
+        //                     success:function(res){
+        //                         if(res.status==true)
+        //                         {
+        //                             table
+        //                             .row( $(e.target).parents('tr') )
+        //                             .remove()
+        //                             .draw();
+        //                             swal("Deleted Successfully"); 
+        //                         }
+        //                     }
+        //                 });
+        //             }
+        //         }).catch(function (error) 
+        //         {
+        //             swal("Could not change", error.statusText, "error"); 
+        //         });;
+        // });
     });
 </script>
 @endpush

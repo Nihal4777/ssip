@@ -26,7 +26,7 @@ class ItemsController extends Controller
     public function create()
     {
         $category=new Item();
-        return view('admin.categories.create',compact('category'));
+        return view('items.create',compact('category'));
     }
 
     /**
@@ -40,8 +40,9 @@ class ItemsController extends Controller
         $request->validate(['category_name'=>'required']);
         $category=new Item;
         $category->name=$request->category_name;
+        $category->type=$request->item_type;
         $category->save();
-        return redirect(route('categories.index'))->withSuccess("Category Added");
+        return redirect(route('items.index'))->withSuccess("Item Added");
     }
 
     /**
@@ -66,10 +67,11 @@ class ItemsController extends Controller
         $category=$item;
         $id=$category->id;
         $name=$category->name;
+        $type=$category->type;
         if(empty($category)){
             return redirect(route('items.index'))->withError("Invalid Id");
         }
-        return view('items.edit',compact('id','name',"category"));
+        return view('items.edit',compact('id','name','type',"category"));
     }
 
     /**
@@ -83,11 +85,11 @@ class ItemsController extends Controller
     {
         $category=$item;
         if(empty($category)){
-            return redirect(route('categories.index'))->withError("Invalid Id");
+            return redirect(route('items.index'))->withError("Invalid Id");
         }
         $category->name=$request->category_name;
         $category->save();
-        return redirect(route('categories.index'))->withSuccess("Category updated successfully");
+        return redirect(route('items.index'))->withSuccess("items updated successfully");
     }
 
     /**
@@ -98,8 +100,13 @@ class ItemsController extends Controller
      */
     public function destroy(Item $item)
     {
+        return;
         $category=$item;
         $category->delete();
-        return response()->json(['status'=>true]);
+        return redirect(route('items.index'))->withSuccess("item deleted successfully");
     }
+    // public function get_items()
+    // {
+    //     return response()->json(['status'=>true,'data'=>Item::where('type','E')->get()]);
+    // }
 }
