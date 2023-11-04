@@ -30,7 +30,7 @@ class AuthController extends Controller
                 "password" => $request->password,
             ];
             if(Auth::attempt($credentials)) {
-                return redirect('/');
+                return redirect('/centers');
             }
             
             return back()->withErrors([ "Invalid email and password" ]);

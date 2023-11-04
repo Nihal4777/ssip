@@ -29,8 +29,8 @@ class StocksController extends Controller
     {
         foreach($request->ids as $id)
         {
-
             
+
         }
         DB::table('stocks')->whereIn('id',$request->ids)->update(['status' => 1]);
         return Redirect::back()->with('success','Status Updated');
