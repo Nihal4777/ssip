@@ -201,6 +201,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{route('stocks.store')}}" method="post">
+                <input type="hidden" name="center_code" value="{{$center->id}}"/>
                 <div class="modal-body">
                 <ul class="list">
                     <li class="list-group-item" style="margin-bottom: 10px;"><i class="ri-price-tag-3-line"></i> <b> AnganWadi Id : </b></li>

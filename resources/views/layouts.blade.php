@@ -199,6 +199,7 @@
 
   </header><!-- End Header -->
  
+  @role("admin")
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
@@ -262,6 +263,55 @@
     </ul>
 
   </aside><!-- End Sidebar-->
+
+  @endrole
+  @role('teacher')
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="users-profile.html">
+          <i class="bi bi-house"></i>
+          <span>Home</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="agan_current_stock.html">
+          <i class="bi bi-house"></i>
+          <span>Current Stock</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/assigned">
+          <i class="bi bi-house"></i>
+          <span>Assigned Stock</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="agan_consumption.html">
+          <i class="bi bi-card-list"></i>
+          <span>Consumption</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-error-404.html">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>logout</span>
+        </a>
+      </li><!-- End Error 404 Page Nav -->
+
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+  @endrole
+
+
+
 
   <main id="main" class="main">
     @if ($errors->any())

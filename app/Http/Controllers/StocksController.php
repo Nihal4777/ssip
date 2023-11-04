@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Stock;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class StocksController extends Controller
@@ -13,10 +14,19 @@ class StocksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function updateIds(Request $request)
+    {
+        DB::table('stocks')->whereIn('id',$request->ids)->update(['status' => 1]);
+        return Redirect::back()->with('success','Status Updated');
+    }
+
+
+
     public function index()
     {
         //
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -40,6 +50,7 @@ class StocksController extends Controller
         $stock->item_cat=$request->cat;
         $stock->qnt=$request->qnt;
         $stock->item_name=$request->item_name;
+        $stock->center_id=$request->center_code;
         $stock->status=0;
         $stock->save();
         return Redirect::back()->with('message','Item Added');
@@ -88,5 +99,20 @@ class StocksController extends Controller
     public function destroy(Stock $stock)
     {
         //
+    }
+
+    public function pending()
+    {
+        $Pstocks=Stock::where(['status'=>0])->get();
+        return view('supplier',compact('Pstocks'));
+    }
+
+
+
+    public function assigned()
+    {
+        $Pstocks=Stock::where(['status'=>0,'center_id'=>auth()->user()->center_id])->get();
+        $Dstocks=Stock::where(['status'=>1,'center_id'=>auth()->user()->center_id])->get();
+        return view('assigned',compact('Pstocks','Dstocks'));
     }
 }

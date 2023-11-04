@@ -30,14 +30,6 @@ class AuthController extends Controller
                 "password" => $request->password,
             ];
             if(Auth::attempt($credentials)) {
-                $user = auth()->user();
-                if(!$user->hasRole("admin")) {
-                    Auth::logout();
-                    $request->session()->flush();
-                    $request->session()->regenerateToken();
-                            
-                    return back()->withErrors([ "Invalid email and password" ]);
-                }
                 return redirect('/');
             }
             
@@ -69,7 +61,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/login');
 
     }
 }

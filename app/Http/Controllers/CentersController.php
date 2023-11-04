@@ -77,7 +77,7 @@ class CentersController extends Controller
     {
         $user=auth()->user();
         $cat=Item::get()->unique('type');
-        $Pstocks=Stock::where('status',0)->get();
+        $Pstocks=Stock::where(['status'=>0,'center_id'=>$center->id])->get();
         return view('centers.manage',compact('center','user','cat','Pstocks'));
     }
 

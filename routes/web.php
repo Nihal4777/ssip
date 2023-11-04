@@ -5,6 +5,7 @@ use App\Http\Controllers\CentersController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\StocksController;
 use App\Models\Item;
+use App\Models\Stock;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +25,20 @@ Route::get('/', function () {
 
 
 Route::get("login",[AuthController::class,'login'])->name('login');
+Route::get("supplier/pending",[StocksController::class,'pending']);
+Route::get("supplier/done",[StocksController::class,'done']);
 Route::post("login",[AuthController::class,'login_attempt']);
 Route::get("logout",[AuthController::class,'logout']);
+
+
+Route::post("updateIds",[StocksController::class,'updateIds']);
+
+Route::get("assigned",[StocksController::class,'assigned']);
+
+
+
+
+
 Route::group([ "middleware" => ["auth"]], function () {
     Route::resource("centers",CentersController::class);
     Route::resource("items",ItemsController::class);
