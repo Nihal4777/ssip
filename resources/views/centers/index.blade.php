@@ -1,6 +1,7 @@
 @extends('layouts')
 @section('main')
-<main id="main" class="main">
+
+
     <div class="">
         <div class="card-body">
           <h5 class="card-title"><i class="ri-filter-off-line"></i>  Search Anganwadi</h5>
@@ -161,105 +162,25 @@
         <thead>
           <tr style="height: 50px;">
             <th scope="col">No</th>
-            <th scope="col">ID</th>
-            <th scope="col">Anganwadi Name</th>
             <th scope="col">Code</th>
+            <th scope="col">Anganwadi Name</th>
             <th scope="col">Area</th>
             <th scope="col">City</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
+          @foreach ($data as $i=>$d)
           <tr>
-            <th scope="row">1</th>
-            <td>23123</td>
-            <td>Brandon Jacob</td>
-            <td>28</td>
-            <td>Kessler</td>
-            <td>Ahmedabad</td>
+            <th scope="row">{{$i+1}}</th>
+            <td>{{$d->code}}</td>
+            <td>{{$d->center_name}}</td>
+            <td>{{$d->area}}</td>
+            <td>{{$i+1}}</td>
             <td><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalopen">open</button></td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>23146</td>
-            <td>Bridie Kessler</td>
-            <td>35</td>
-            <td>Jacob</td>
-            <td>Ahmedabad</td>
-            <td><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalopen">open</button></td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>823456</td>
-            <td>Ashleigh Langosh</td>
-            <td>45</td>
-            <td>Bridie</td>
-            <td>Ahmedabad</td>
-            <td><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalopen">open</button></td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>23479</td>
-            <td>Angus Grady</td>
-            <td>34</td>
-            <td>Bridie</td>
-            <td>Ahmedabad</td>
-            <td><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalopen" >open</button></td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>24621</td>
-            <td>Raheem Lehner</td>
-            <td>47</td>
-            <td>Raheem</td>
-            <td>Ahmedabad</td>
-            <td><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalopen">open</button></td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>23123</td>
-            <td>Brandon Jacob</td>
-            <td>28</td>
-            <td>Kessler</td>
-            <td>Ahmedabad</td>
-            <td><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalopen">open</button></td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>23146</td>
-            <td>Bridie Kessler</td>
-            <td>35</td>
-            <td>Jacob</td>
-            <td>Ahmedabad</td>
-            <td><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalopen">open</button></td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>823456</td>
-            <td>Ashleigh Langosh</td>
-            <td>45</td>
-            <td>Bridie</td>
-            <td>Ahmedabad</td>
-            <td><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalopen">open</button></td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>23479</td>
-            <td>Angus Grady</td>
-            <td>34</td>
-            <td>Bridie</td>
-            <td>Ahmedabad</td>
-            <td><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalopen" >open</button></td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>24621</td>
-            <td>Raheem Lehner</td>
-            <td>47</td>
-            <td>Raheem</td>
-            <td>Ahmedabad</td>
-            <td><button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalopen">open</button></td>
-          </tr>
+          </tr> 
+          @endforeach
+         
         </tbody>
       </table>
       <nav style="float: right;margin: auto 5%;" aria-label="...">
@@ -277,5 +198,5 @@
           </li>
         </ul>
       </nav>
-  </main>
+
 @endsection

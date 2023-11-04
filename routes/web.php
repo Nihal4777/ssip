@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CentersController;
+use App\Http\Controllers\ItemsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,4 @@ Route::get('/', function () {
     return view('layouts');
 });
 Route::resource("centers",CentersController::class);
+Route::resource("items",ItemsController::class);

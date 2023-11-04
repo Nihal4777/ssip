@@ -20,7 +20,8 @@ class CentersController extends Controller
     private $pwd;
     public function index()
     { 
-        return view("centers.index");
+        $data=Center::all();
+        return view("centers.index",['data'=>$data]);
     }
 
     /**
@@ -41,6 +42,9 @@ class CentersController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'email'=>'unique:users',
+        ]);
         $center=new Center;
         $center->center_name=$request->cname;
         $center->code=$request->code;
@@ -58,7 +62,7 @@ class CentersController extends Controller
         $user->assignRole('teacher');
         $user->save();
         Mail::to($user)->send(new CenterAdded($user->email,$this->pwd));
-        return view("centers.index")->with('success','Center Added successfully');
+        return redirect(route('centers.index'))->with('success','Center Added successfully');
     }
 
     /**
