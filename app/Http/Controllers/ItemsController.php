@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,8 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        $categories=Item::all();
-        return view('items.index',compact('categories'));
+        $items=Item::with('category')->get();
+        return view('items.index',compact('items'));
     }
 
     /**
@@ -26,7 +27,8 @@ class ItemsController extends Controller
     public function create()
     {
         $category=new Item();
-        return view('items.create',compact('category'));
+        $categories=Categories::all();
+        return view('items.create',compact('category','categories'));
     }
 
     /**
@@ -40,8 +42,8 @@ class ItemsController extends Controller
         $request->validate(['category_name'=>'required']);
         $category=new Item;
         $category->name=$request->category_name;
-        $category->type=$request->item_type;
-        $category->save();
+        $category->category_id=$request->category_id;
+        $category->save();  
         return redirect(route('items.index'))->withSuccess("Item Added");
     }
 
@@ -64,6 +66,7 @@ class ItemsController extends Controller
      */
     public function edit(Item $item)
     {
+        $categories=Categories::all();
         $category=$item;
         $id=$category->id;
         $name=$category->name;
@@ -71,7 +74,7 @@ class ItemsController extends Controller
         if(empty($category)){
             return redirect(route('items.index'))->withError("Invalid Id");
         }
-        return view('items.edit',compact('id','name','type',"category"));
+        return view('items.edit',compact('id','name','type',"category",'categories'));
     }
 
     /**
@@ -88,6 +91,7 @@ class ItemsController extends Controller
             return redirect(route('items.index'))->withError("Invalid Id");
         }
         $category->name=$request->category_name;
+        $category->category_id=$request->category_id;
         $category->save();
         return redirect(route('items.index'))->withSuccess("items updated successfully");
     }
@@ -100,10 +104,8 @@ class ItemsController extends Controller
      */
     public function destroy(Item $item)
     {
-        return;
-        $category=$item;
-        $category->delete();
-        return redirect(route('items.index'))->withSuccess("item deleted successfully");
+        $item->delete();
+        return response()->json(['status'=>true]);
     }
     // public function get_items()
     // {

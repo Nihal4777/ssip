@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->string('item_cat');
-            $table->string('item_name');
+            $table->foreignId("item");
+            $table->foreign("item")->references('id')->on('items');
             $table->integer('qnt');
-            $table->integer('status');
             $table->foreignId("center_id")->nullable(true);
             $table->foreign("center_id")->references('id')->on('centers');
+            $table->integer('status')->nullable(); //for future use
             $table->timestamps();
         });
     }

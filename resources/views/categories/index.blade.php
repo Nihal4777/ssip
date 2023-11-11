@@ -1,34 +1,32 @@
 @extends ("layouts")
 
-@section ("title", "- items")
-@section ("page_title", "items")
+@section ("title", "- Categories")
+@section ("page_title", "Categories")
 
 @section ("main")
 
 <div class="card">
-    <a class="btn btn-primary ml-auto d-block mt-3 mr-3" href="{{route('items.create')}}">Add</a>
+    <a class="btn btn-primary ml-auto d-block mt-3 mr-3" href="{{route('categories.create')}}">Add</a>
     <div class="card-block">
         <div class="table-responsive dt-responsive">
             <table id="table" class="table table-striped table-hover table-bordered text-center">
                 <thead>
                     <tr>
                         <th>Sr No</th>
-                        <th>Category</th>
-                        <th>items Name</th>
+                        <th>Category Name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($items as $index => $item)
+                    @foreach ($categories as $index => $category)
                     <tr>
                         <td>{{$index+1}}</td>
-                        <td>{{$item->category->name}}</td> 
-                        <td>{{$item->name}}</td>
+                        <td>{{$category->name}}</td>
                         <td>
-                            <a href="{{route('items.edit',$item->id)}}" class='btn waves-effect waves-light btn-warning icon-btn btn-icon bs-tooltip' title="Edit">
+                            <a href="{{route('categories.edit',$category->id)}}" class='btn waves-effect waves-light btn-warning icon-btn btn-icon bs-tooltip' title="Edit">
                                 <i class='icofont icofont-edit'></i>
                             </a>
-                            <button href="" class='btn waves-effect waves-light btn-danger icon-btn btn-icon bs-tooltip delete_btn' title="Delete" data-id="{{$item->id}}">
+                            <button href="{{""}}" class='btn waves-effect waves-light btn-danger icon-btn btn-icon bs-tooltip delete_btn' title="Delete" data-id="{{$category->id}}">
                                 <i class='icofont icofont-close'></i>
                             </button>
                         </td>
@@ -64,7 +62,6 @@
 var table;
 var id;
     $(document).ready(function(){
-        console.log("DDA");
         table = $("#table").DataTable({
             oLanguage: {
                 sEmptyTable: "No data found",
@@ -92,7 +89,7 @@ var id;
                     if (willDelete) {
                         $.ajax({
                             method:'DELETE',
-                            url:"/items/"+id+'?_token={{csrf_token()}}',
+                            url:"/categories/"+id+'?_token={{csrf_token()}}',
                             success:function(res){
                                 if(res.status==true)
                                 {

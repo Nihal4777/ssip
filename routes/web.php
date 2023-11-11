@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CentersController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\StocksController;
@@ -30,6 +31,7 @@ Route::get("supplier/done",[StocksController::class,'done']);
 Route::post("login",[AuthController::class,'login_attempt']);
 Route::get("logout",[AuthController::class,'logout']);
 
+Route::resource("categories",CategoriesController::class);
 
 Route::post("updateIds",[StocksController::class,'updateIds']);
 

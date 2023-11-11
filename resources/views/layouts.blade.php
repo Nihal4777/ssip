@@ -238,6 +238,11 @@
           </li>
 
           <li>
+            <a href="/categories">
+              <i class="bi bi-circle"></i><span>Categories</span>
+            </a>
+          </li>
+          <li>
             <a href="components-alerts.html">
               <i class="bi bi-circle"></i><span>Invoices</span>
             </a>
