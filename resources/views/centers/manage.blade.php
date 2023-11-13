@@ -4,11 +4,11 @@
       <div class="card-body">
         <h5 class="card-title" style="text-align: center;">Arvalli Anganwadi</h5>
         <ul class="custom" style="margin: 10px auto;">
-          <li class="list-group-item"><i class="ri-price-tag-3-line"></i> <b> AnganWadi Id : </b> {{$user->email}}</li>
-          <li class="list-group-item"><i class="ri-mail-send-fill"></i> <b> Email :</b> {{$user->email}}</li>
+          <li class="list-group-item"><i class="ri-price-tag-3-line"></i> <b> AnganWadi Code : </b> {{$center->code}}</li>
           <li class="list-group-item"><i class="ri-shield-user-line"></i><b> Owner's Name :</b> {{$user->name}}</li>
-          <li class="list-group-item"><i class="bi bi-pin-map-fill"></i><b> City</b> Arvalli</li>
+          <li class="list-group-item"><i class="ri-mail-send-fill"></i> <b> Email :</b> {{$user->email}}</li>
           <li class="list-group-item"><i class="bi bi-pin-angle"></i></i><b> Area :</b> {{$center->area}} </li>
+          <li class="list-group-item"><i class="bi bi-pin-map-fill"></i><b> City</b> Arvalli</li>
           <li class="list-group-item"><i class="bi bi-house"></i><b> Location :</b> {{$center->address}}
 
             <span style="margin: auto 5%;">
@@ -29,7 +29,6 @@
           <tr>
             <th></th>
             <th scope="col">No</th>
-
             <th scope="col">Category</th>
             <th scope="col">Name</th>
             <th scope="col">Quantity</th>
@@ -182,96 +181,95 @@
       </table> --}}
     </div>
     <div class="modal fade" id="grandModal" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalopenLabel">AnganWadi Name</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="{{route('stocks.store')}}" method="post">
-                <input type="hidden" name="center_code" value="{{$center->id}}"/>
-                <div class="modal-body">
-                <ul class="list">
-                    <li class="list-group-item" style="margin-bottom: 10px;"><i class="ri-price-tag-3-line"></i> <b> AnganWadi Id : </b></li>
-                    <div class="col-6 mset">
-                    <label for="validationDefault04" class="form-label">Category</label>
-                    <select class="form-select cat" name="cat" id="validationDefault04" required>
-                    <option selected disabled value="">Select Category</option>
-                    @foreach ($cat as $c)
-                        <option>{{$c->type}}</option>
-                    @endforeach
-                    </select>                 
-                </div>
-                    </li>
-                    <div class="col-6 mset">
-                    <label for="validationDefault04" class="form-label">Item Name</label>
-                    <div class='items'>
-                        <select class="form-select" name="item_name" id="validationDefault04" required>
-                        <option selected disabled >Item Name</option>
-                        </select>      
-                </div>
-                    
-                    </li>
-        
-                    <li class="list-group-item mset">Quantity : 
-                    <input type="number" class="form-control" id="validationDefault01" name="qnt"  required>
-                    </li>
-        
-                </ul><!-- End List group With Icons -->
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Grant</button>
-                </div>
-                {{ @csrf_field() }}
-            </form>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalopenLabel">AnganWadi Name</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+          <form action="{{route('stocks.store')}}" method="post">
+              <input type="hidden" name="center_code" value="{{$center->id}}"/>
+              <div class="modal-body">
+              <ul class="list">
+                  <li class="list-group-item" style="margin-bottom: 10px;"><i class="ri-price-tag-3-line"></i> <b> AnganWadi Id : </b></li>
+                  <div class="col-6 mset">
+                  <label for="validationDefault04" class="form-label">Category</label>
+                  <select class="form-select cat" name="cat" id="validationDefault04" required>
+                  <option selected disabled value="">Select Category</option>
+                  @foreach ($cat as $c)
+                      <option value='{{$c->id}}'>{{$c->name}}</option>
+                  @endforeach
+                  </select>                 
+              </div>
+                  </li>
+                  <div class="col-6 mset">
+                  <label for="validationDefault04" class="form-label">Item Name</label>
+                  <div class='items'>
+                      <select class="form-select" name="item_id" id="validationDefault04" required>
+                      <option selected disabled >Item Name</option>
+                      </select>      
+              </div>
+                  
+                  </li>
+      
+                  <li class="list-group-item mset">Quantity : 
+                  <input type="number" class="form-control" id="validationDefault01" name="qnt"  required>
+                  </li>
+      
+              </ul><!-- End List group With Icons -->
+              </div>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Grant</button>
+              </div>
+              {{ @csrf_field() }}
+          </form>
         </div>
       </div>
+    </div>
   @endsection
 
   @push("scripts")
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script type="text/javascript">
-    $(document).ready(function () {   
-        $('.cat').on('change', function () {
-            var selectVal = this.selectedOptions[0].value;
-            var formData = {
-                "_token": "{{ csrf_token() }}",
-                'id': selectVal //for get email 
-            };
+  <script type="text/javascript">
+      $(document).ready(function () {   
+          $('.cat').on('change', function () {
+              var selectVal = this.selectedOptions[0].value;
+              var formData = {
+                  "_token": "{{ csrf_token() }}",
+                  'id': selectVal //for get email 
+              };
 
-            $.ajax({
-                url: `/getItem/${selectVal}`,
-                type: "get",
-                data: formData,
-                success: function(d) {
-                    // $('.items').remove();    
-                    $('.items').empty();
-                    $('.items').append(d);
-                }
-            });
-            
-        });
-        $('body').on('change', '.state', function() {
-            var selectVal = this.selectedOptions[0].value;
-            var formData = {
-                "_token": "{{ csrf_token() }}",
-                'id': selectVal //for get email 
-            };
+              $.ajax({
+                  url: `/getItem/${selectVal}`,
+                  type: "get",
+                  data: formData,
+                  success: function(d) {
+                      // $('.items').remove();    
+                      $('.items').empty();
+                      $('.items').append(d);
+                  }
+              });
+              
+          });
+          $('body').on('change', '.state', function() {
+              var selectVal = this.selectedOptions[0].value;
+              var formData = {
+                  "_token": "{{ csrf_token() }}",
+                  'id': selectVal //for get email 
+              };
 
-            $.ajax({
-                url: "/getCity",
-                type: "post",
-                data: formData,
-                success: function(d) {
-                    $('.city-list').remove();
-                    $('.city-label').empty();
-                    $('.city-label').append(d);
-                }
-            });
-            
-        });
-     });
-</script>
-@endpush
+              $.ajax({
+                  url: "/getCity",
+                  type: "post",
+                  data: formData,
+                  success: function(d) {
+                      $('.city-list').remove();
+                      $('.city-label').empty();
+                      $('.city-label').append(d);
+                  }
+              });
+              
+          });
+      });
+  </script>
+  @endpush

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\CenterAdded;
+use App\Models\Categories;
 use App\Models\Center;
 use App\Models\Item;
 use App\Models\Stock;
@@ -23,7 +24,8 @@ class CentersController extends Controller
     public function index()
     { 
         $data=Center::all();
-        return view("centers.index",['data'=>$data]);
+        $cat=Categories::get();
+        return view("centers.index",['data'=>$data,'cat'=>$cat]);
     }
 
     /**
@@ -76,7 +78,7 @@ class CentersController extends Controller
     public function show(Center $center)
     {
         $user=User::where('center_id',$center->id)->first();
-        $cat=Item::get()->unique('type');
+        $cat=Categories::get();
         $Pstocks=Stock::where(['status'=>0,'center_id'=>$center->id])->get();
         return view('centers.manage',compact('center','user','cat','Pstocks'));
     }

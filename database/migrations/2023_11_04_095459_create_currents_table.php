@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations. Not used as of now
      *
      * @return void
      */
@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('item_cat');
             $table->string('item_name');
-            $table->integer('qnt');
+            $table->float('qnt');
             $table->foreignId("center_id")->nullable(true);
             $table->foreign("center_id")->references('id')->on('centers');
             $table->timestamps();

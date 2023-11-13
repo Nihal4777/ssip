@@ -25,27 +25,27 @@ class StocksController extends Controller
 
 
 
-    public function updateIds(Request $request)
-    {
-        foreach($request->ids as $id)
-        {
-            $stock=Stock::find($id);
-            $c=Current::where(['item_name'=>$stock->item_name,'center_id'=>$stock->center_id])->count();
-            if($c){
-                DB::table('currents')->where(['item_name'=>$stock->item_name,'center_id'=>$stock->center_id])->increment('qnt', $stock->qnt);    
-            }
-            else{
-                $current=new Current;
-                $current->item_cat=$stock->item_cat;
-                $current->item_name=$stock->item_name;
-                $current->qnt=$stock->qnt;
-                $current->center_id=$stock->center_id;
-                $current->save();
-            }
-        }
-        DB::table('stocks')->whereIn('id',$request->ids)->update(['status' => 1]);
-        return Redirect::back()->with('success','Status Updated');
-    }
+    // public function updateIds(Request $request)
+    // {
+    //     foreach($request->ids as $id)
+    //     {
+    //         $stock=Stock::find($id);
+    //         $c=Current::where(['item_name'=>$stock->item_name,'center_id'=>$stock->center_id])->count();
+    //         if($c){
+    //             DB::table('currents')->where(['item_name'=>$stock->item_name,'center_id'=>$stock->center_id])->increment('qnt', $stock->qnt);    
+    //         }
+    //         else{
+    //             $current=new Current;
+    //             $current->item_cat=$stock->item_cat;
+    //             $current->item_name=$stock->item_name;
+    //             $current->qnt=$stock->qnt;
+    //             $current->center_id=$stock->center_id;
+    //             $current->save();
+    //         }
+    //     }
+    //     DB::table('stocks')->whereIn('id',$request->ids)->update(['status' => 1]);
+    //     return Redirect::back()->with('success','Status Updated');
+    // }
 
 
 
@@ -132,13 +132,5 @@ class StocksController extends Controller
     {
         $Pstocks=Stock::where(['status'=>0])->get();
         return view('supplier',compact('Pstocks'));
-    }
-
-
-    public function assigned()
-    {
-        $Pstocks=Stock::where(['status'=>0,'center_id'=>auth()->user()->center_id])->get();
-        $Dstocks=Stock::where(['status'=>1,'center_id'=>auth()->user()->center_id])->get();
-        return view('assigned',compact('Pstocks','Dstocks'));
     }
 }

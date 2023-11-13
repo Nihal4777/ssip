@@ -3,6 +3,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CentersController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\DeliveriesController;
+use App\Http\Controllers\GrantsController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\StocksController;
 use App\Models\Item;
@@ -26,6 +29,10 @@ Route::get('/', function () {
 
 
 Route::get("login",[AuthController::class,'login'])->name('login');
+Route::get("dashboard",[Controller::class,'dashboard'])->name('dashboard');
+
+
+
 Route::get("supplier/pending",[StocksController::class,'pending']);
 Route::get("supplier/done",[StocksController::class,'done']);
 Route::post("login",[AuthController::class,'login_attempt']);
@@ -33,26 +40,34 @@ Route::get("logout",[AuthController::class,'logout']);
 
 Route::resource("categories",CategoriesController::class);
 
-Route::post("updateIds",[StocksController::class,'updateIds']);
+// Route::post("updateIds",[StocksController::class,'updateIds']);
 
 
 
 Route::get("current",[StocksController::class,'current']);
-Route::get("assigned",[StocksController::class,'assigned']);
+
+Route::group(['middleware'=>["auth","role:teacher"]],function() {
+    Route::get("assigned",[Controller::class,'assigned']);
+    Route::resource("deliveries",DeliveriesController::class);
+
+});
 
 
 
 
-
-Route::group([ "middleware" => ["auth"]], function () {
+Route::group([ "middleware" => ["auth","role:admin"]], function () {
     Route::resource("centers",CentersController::class);
     Route::resource("items",ItemsController::class);
+    Route::resource("grants",GrantsController::class);
     Route::resource("stocks",StocksController::class);
+    
+    
+    
     Route::get('getItem/{id}',function($id){
-        $states = Item::where('type',$id)->get();
-        $data='<select class="form-control default-select wide state state-list"  name="item_name" required><option value="">-- Select Item --</option>';
+        $states = Item::where('category_id',$id)->get();
+        $data='<select class="form-control default-select wide state state-list"  name="item_id" required><option value="">-- Select Item --</option>';
         foreach ($states as $state){
-            $data.='<option value="'.$state->name.'">'.$state->name.'</option>';
+            $data.='<option value="'.$state->id.'">'.$state->name.'</option>';
         }
         $data.='</select>';
         return $data;

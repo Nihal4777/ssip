@@ -208,7 +208,7 @@
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/">
+        <a class="nav-link collapsed" href="/dashboard">
           <i class="bi bi-house"></i>
           <span>Home</span>
         </a>
@@ -221,7 +221,7 @@
         <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav" style="">
           <li>
             <a href="/centers" class="active">
-              <i class="bi bi-circle"></i><span>Aanganwadi</span>
+              <i class="bi bi-circle"></i><span>Aanganwadis</span>
             </a>
           </li>
         
@@ -230,18 +230,18 @@
               <i class="bi bi-circle"></i><span>Suppliers</span>
             </a>
           </li>
-
+          <li>
+            <a href="/categories">
+              <i class="bi bi-circle"></i><span>Categories</span>
+            </a>
+          </li>
           <li>
             <a href="/items">
               <i class="bi bi-circle"></i><span>Items</span>
             </a>
           </li>
 
-          <li>
-            <a href="/categories">
-              <i class="bi bi-circle"></i><span>Categories</span>
-            </a>
-          </li>
+         
           <li>
             <a href="components-alerts.html">
               <i class="bi bi-circle"></i><span>Invoices</span>
@@ -294,7 +294,12 @@
           <span>Assigned Stock</span>
         </a>
       </li><!-- End Profile Page Nav -->
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/deliveries">
+          <i class="bi bi-house"></i>
+          <span>Past Deliveries</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="agan_consumption.html">
           <i class="bi bi-card-list"></i>
@@ -303,7 +308,7 @@
       </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-error-404.html">
+        <a class="nav-link collapsed" href="/logout">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>logout</span>
         </a>
@@ -356,7 +361,7 @@
       class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="/assets/vendor/chart.js/chart.umd.js"></script>

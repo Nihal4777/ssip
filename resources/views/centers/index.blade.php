@@ -132,56 +132,80 @@
           </div><!-- End Vertically centered Modal-->
         <!-- Vertically centered modal -->
     </div>
-
+    <div class="m-3" id='alldiv' style="display: none">
+      <button class="btn btn-primary ms-auto me-2" form="this" style="margin-left: auto;display: block;" data-bs-toggle="modal" data-bs-target="#grandModal" onclick="document.getElementById('flag').value=1">Grant Stocks</button>
+    </div>
         <table class="table table-striped">
         <!-- Modal -->
-<div class="modal fade" id="modalopen" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true">
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="modalopenLabel">AnganWadi Name</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-        <ul class="list-group">
-            <li class="list-group-item"><i class="ri-price-tag-3-line"></i> <b> AnganWadi Id : </b></li>
-            <li class="list-group-item"><i class="ri-mail-send-fill"></i> <b> Email :</b></li>
-            <li class="list-group-item"><i class="ri-shield-user-line"></i><b> Owner's Name :</b></li>
-            <li class="list-group-item"><i class="bi bi-pin-map-fill"></i><b> City</b></li>
-            <li class="list-group-item"> <i class="bi bi-pin-angle"></i></i><b> Area :</b></li>
-            <li class="list-group-item"><i class="bi bi-house"></i><b> Location :</b></li>
-          </ul><!-- End List group With Icons -->
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
-    </div>
-  </div>
-</div>
-</div>
+        <div class="modal fade" id="modalopen" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalopenLabel">AnganWadi Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <ul class="list-group">
+                      <li class="list-group-item"><i class="ri-price-tag-3-line"></i> <b> AnganWadi Id : </b></li>
+                      <li class="list-group-item"><i class="ri-mail-send-fill"></i> <b> Email :</b></li>
+                      <li class="list-group-item"><i class="ri-shield-user-line"></i><b> Owner's Name :</b></li>
+                      <li class="list-group-item"><i class="bi bi-pin-map-fill"></i><b> City</b></li>
+                      <li class="list-group-item"> <i class="bi bi-pin-angle"></i></i><b> Area :</b></li>
+                      <li class="list-group-item"><i class="bi bi-house"></i><b> Location :</b></li>
+                    </ul><!-- End List group With Icons -->
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <thead>
           <tr style="height: 50px;">
-            <th scope="col">No</th>
+            <th scope="col"><div class="form-check">
+              <input class="form-check-input checkall" type="checkbox" id="flexCheckDefault">
+            </div></th>
+            <th scope="col">Sr.No.</th>
             <th scope="col">Code</th>
             <th scope="col">Anganwadi Name</th>
             <th scope="col">Area</th>
             <th scope="col">City</th>
+            <th scope="col"></th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           @foreach ($data as $i=>$d)
           <tr>
+            <td><div class="form-check">
+              <input class="form-check-input checkcenterids" form="grantForm" type="checkbox" name="centerids[]" value="{{$d->id}}" id="flexCheckDefault">
+            </div></td>
             <th scope="row">{{$i+1}}</th>
             <td>{{$d->code}}</td>
             <td>{{$d->center_name}}</td>
             <td>{{$d->area}}</td>
             <td>{{$i+1}}</td>
             <td><a href='{{"/centers/".$d->id}}' class="btn btn-primary">Show</a></td>
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Manage
+                </button>
+                <ul class="dropdown-menu">
+                  <li><button class="dropdown-item" href="#" data-centercode="{{$d->id}}"  data-bs-toggle="modal"
+                    data-bs-target="#grandModal" onclick="updateCode(event)"  >Grant Stocks</button></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </div>
+            </td>
           </tr> 
           @endforeach
          
         </tbody>
+
+        
       </table>
       <nav style="float: right;margin: auto 5%;" aria-label="...">
         <ul class="pagination">
@@ -199,4 +223,126 @@
         </ul>
       </nav>
 
+
+      <div class="modal fade" id="grandModal" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalopenLabel">AnganWadi Name</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{route('grants.store')}}" method="post" id="grantForm">
+                <input type="hidden" name="center_id" id="center_id" value="-1"/>
+                <input type="hidden" name="check_count" id="check_count" value="0"/>
+                <div class="modal-body">
+                <ul class="list">
+                    <li class="list-group-item" style="margin-bottom: 10px;"><i class="ri-price-tag-3-line"></i> <b> AnganWadi Id : </b></li>
+                    <div class="col-6 mset">
+                    <label for="validationDefault04" class="form-label">Category</label>
+                    <select class="form-select cat" name="cat" id="validationDefault04" required>
+                    <option selected disabled value="">Select Category</option>
+                    @foreach ($cat as $c)
+                      <option value='{{$c->id}}'>{{$c->name}}</option>
+                    @endforeach
+                    </select>                 
+                </div>
+                    </li>
+                    <div class="col-6 mset">
+                    <label for="validationDefault04" class="form-label">Item Name</label>
+                    <div class='items'>
+                        <select class="form-select" name="item_id" id="validationDefault04" required>
+                        <option selected disabled >Item Name</option>
+                        </select>      
+                </div>
+                    
+                    </li>
+        
+                    <li class="list-group-item mset">Quantity : 
+                    <input type="number" class="form-control" id="validationDefault01" name="qnt"  required>
+                    </li>
+        
+                </ul><!-- End List group With Icons -->
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="flag" name="flag" value="0">Grant</button>
+                </div>
+                {{ @csrf_field() }}
+            </form>
+          </div>
+        </div>
+      </div>
 @endsection
+@push("scripts")
+  <script type="text/javascript">
+
+  function updateCode(e){
+    $('#center_id').val($(e.currentTarget).data('centercode'));
+    $('#flag').val(0);
+      }
+      $(document).ready(function () {  
+          $('.cat').on('change', function () {
+              var selectVal = this.selectedOptions[0].value;
+              var formData = {
+                  "_token": "{{ csrf_token() }}",
+                  'id': selectVal //for get email 
+              };
+              $.ajax({
+                  url: `/getItem/${selectVal}`,
+                  type: "get",
+                  data: formData,
+                  success: function(d) {
+                      // $('.items').remove();    
+                      $('.items').empty();
+                      $('.items').append(d);
+                  }
+              });
+              
+          });
+          $('.checkcenterids').on('change', function (e) {
+              if(e.currentTarget.checked)
+               $('#check_count').val(parseInt($('#check_count').val())+1);
+              else
+               $('#check_count').val(parseInt($('#check_count').val())-1);
+              if(parseInt($('#check_count').val()))
+              {
+                $('#alldiv').show();  
+                if(parseInt($('#check_count').val())==$('.checkcenterids').length)
+                $('.checkall').prop('checked',e.currentTarget.checked);
+              }
+              else
+              {
+                $('#alldiv').hide();  
+                $('.checkall').prop('checked',e.currentTarget.checked);
+              }
+          });
+          $('.checkall').on('change', function (e) {
+              $('#check_count').val($('.checkcenterids').length);
+              $('.checkcenterids').prop('checked',e.currentTarget.checked);
+              $('#alldiv').toggle();
+          });
+
+
+
+          $('body').on('change', '.state', function() {
+              var selectVal = this.selectedOptions[0].value;
+              var formData = {
+                  "_token": "{{ csrf_token() }}",
+                  'id': selectVal //for get email 
+              };
+
+              $.ajax({
+                  url: "/getCity",
+                  type: "post",
+                  data: formData,
+                  success: function(d) {
+                      $('.city-list').remove();
+                      $('.city-label').empty();
+                      $('.city-label').append(d);
+                  }
+              });
+              
+          });
+      });
+  </script>
+  @endpush
