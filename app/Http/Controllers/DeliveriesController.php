@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Delivery;
 use App\Models\Grant;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -20,7 +21,7 @@ class DeliveriesController extends Controller
         $user=auth()->user();
         if($user->role('teacher'))
         {
-            $deliveries=DB::table('deliveries as d')->where(['center_id'=>$user->center_id,])->join('grants as g','d.grant_id','g.id')->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->get(['d.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','d.qnt as qnt','fulfilled','g.id as gid']);
+            $deliveries=DB::table('deliveries as d')->where(['d.center_id'=>$user->center_id,])->join('grants as g','d.grant_id','g.id')->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->get(['d.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','d.qnt as qnt','fulfilled','g.id as gid']);
             return view('deliveries',compact('deliveries'));
         }
     }
@@ -49,7 +50,13 @@ class DeliveriesController extends Controller
             $delivery=new Delivery();
             $delivery->grant_id=$request->partial;
             $delivery->qnt=$request->qnt;
+            $delivery->center_id=$grant->center_id;
             $grant->fulfilled=$grant->fulfilled+$request->qnt;
+            $stock=Stock::where(['center_id'=>$grant->center_id,'item_id'=>$grant->item_id])->first();
+            if(empty($stock))
+                $stock=new Stock(['center_id'=>$grant->center_id,'item_id'=>$grant->item_id]);
+            $stock->qnt+=$request->qnt;
+            $stock->save();
             $grant->save();
             $delivery->save();
         }
@@ -60,6 +67,12 @@ class DeliveriesController extends Controller
             $delivery->grant_id=$request->complete;
             $delivery->qnt=$grant->qnt-$grant->fulfilled;
             $grant->fulfilled=$grant->qnt;
+            $delivery->center_id=$grant->center_id;
+            $stock=Stock::where(['center_id'=>$grant->center_id,'item_id'=>$grant->item_id])->first();
+            if(empty($stock))
+                $stock=new Stock(['center_id'=>$grant->center_id,'item_id'=>$grant->item_id]);
+            $stock->qnt+=$delivery->qnt;
+            $stock->save();
             $grant->save();
             $delivery->save();
         }

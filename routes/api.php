@@ -20,4 +20,4 @@ Route::post("spa/auth", "App\Http\Controllers\AuthController@spaAuth");
 //     return $request->user();
 // });
 
-Route::get("fetch_items",[ApiController::class,'fetch_items']);
+Route::get("get_cat",[ApiController::class,'get_cat']);

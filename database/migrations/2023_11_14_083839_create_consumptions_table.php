@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('deliveries', function (Blueprint $table) {
+        Schema::create('consumptions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("grant_id");
-            $table->foreignId("center_id");
-            $table->foreign("grant_id")->references('id')->on('grants');
             $table->float('qnt');
+            $table->foreignId("item_id");
+            $table->foreignId("center_id");
+            $table->date('date');
+            $table->foreign("item_id")->references('id')->on('items');
             $table->foreign("center_id")->references('id')->on('centers');
             $table->timestamps();
         });
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deliveries');
+        Schema::dropIfExists('consumptions');
     }
 };

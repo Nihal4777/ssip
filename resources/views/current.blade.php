@@ -16,18 +16,18 @@
           <th scope="col">Category</th>
           <th scope="col">Item</th>
           <th scope="col">Quantity</th>
-          <th scope="col">Updated on</th>
+          <th scope="col">Last Updated  </th>
         </tr>
       </thead>
       <tbody>
-        @foreach ($currents as $stocks)
+        @foreach ($stocks as $i=>$stock)
         <tr>
           <th><i class="bi bi-cup-straw" style="color: tomato;"></i></th>
-          <th scope="row">{{$stocks->center_id}}</th>
-          <td>{{$stocks->item_cat}}</td>
-          <td>{{$stocks->item_name}}</td>
-          <td>{{$stocks->qnt}}</td>
-          <td>{{$stocks->created_at}}</td>
+          <th scope="row">{{$i+1}}</th>
+          <td>{{$stock->cname}}</td>
+          <td>{{$stock->itemName}}</td>
+          <td>{{$stock->qnt}}</td>
+          <td>{{$stock->updated_at}}</td>
         </tr>
         @endforeach  
       </tbody>

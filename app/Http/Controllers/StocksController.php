@@ -18,9 +18,9 @@ class StocksController extends Controller
 
     public function current(Request $request)
     {
-        $center=auth()->user();
-        $currents=Current::where('center_id',$center->center_id)->get();
-        return view('current',compact('currents'));
+        $user=auth()->user();
+        $stocks=DB::table('stocks as d')->where(['d.center_id'=>$user->center_id,])->join('items as i','d.item_id','i.id')->join('categories as c','category_id','c.id')->get(['d.id as id','i.name as itemName','c.name as cname','d.qnt as qnt','d.updated_at as updated_at']);
+        return view('current',compact('stocks'));
     }
 
 

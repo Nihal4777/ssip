@@ -280,7 +280,11 @@
           <span>Home</span>
         </a>
       </li><!-- End Profile Page Nav -->
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/consumption">
+          <i class="bi bi-card-list"></i>
+          <span>Enter consumption</span>
+        </a>
       <li class="nav-item">
         <a class="nav-link collapsed" href="/current">
           <i class="bi bi-house"></i>
@@ -300,12 +304,6 @@
           <span>Past Deliveries</span>
         </a>
       </li><!-- End Profile Page Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="agan_consumption.html">
-          <i class="bi bi-card-list"></i>
-          <span>Consumption</span>
-        </a>
-      </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="/logout">
