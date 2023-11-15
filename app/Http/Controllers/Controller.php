@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\Consumption;
 use App\Models\ConsumptionDocument;
-use App\Models\Grant;
+use App\Models\Purchase;
+use App\Models\PurchaseDocument;
+use App\Models\Stock;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -19,7 +21,7 @@ class Controller extends BaseController
 
 
     public function dashboard(Request $request)
-    {
+    { 
         return view('dashboard');
     }
 
@@ -50,6 +52,9 @@ class Controller extends BaseController
             {
                 $cons=new Consumption(['item_id'=>$item,'qnt'=>$request->qnt[$i],'center_id'=>$user->center_id,'date'=>now()]);
                 $cons->save();
+                $stock=Stock::where(['item_id'=>$item,'center_id'=>$user->center_id,])->first();
+                $stock->qnt-=$request->qnt[$i];
+                $stock->save();
             }
         if (!file_exists('documents')) {
             mkdir('documents', 666, true);
@@ -69,6 +74,42 @@ class Controller extends BaseController
     }
 
 
+    public function purchase_index(){
+
+        $cat=Categories::all();
+        return view('purchaseentry',compact('cat'));
+    }
+    public function purchase_store(Request $request)
+    {
+
+        $user=auth()->user();
+        if(!empty($request->item))
+            foreach($request->item as $i=>$item)
+            {
+                $cons=new Purchase(['item_id'=>$item,'qnt'=>$request->qnt[$i],'center_id'=>$user->center_id,'date'=>now()]);
+                $cons->save();
+                $stock=Stock::where(['item_id'=>$item,'center_id'=>$user->center_id,])->first();
+                if(empty($stock))
+                    $stock=new Stock(['item_id'=>$item,'center_id'=>$user->center_id,'qnt'=>0]);
+                $stock->qnt+=$request->qnt[$i];
+                $stock->save();
+            }
+        if (!file_exists('documents')) {
+            mkdir('documents', 666, true);
+        }
+        if(!empty($request->documents))
+            foreach($request->documents as $file)
+            {
+                $filename='documents/'.time().'_'.$file->getClientOriginalName();
+                $file->move(public_path('documents'),$filename);
+                $cd=new PurchaseDocument();
+                $cd->date=date('Y-m-d');
+                $cd->center_id=$user->center_id;
+                $cd->file=$filename;
+                $cd->save();
+            }
+        return redirect()->back()->with('success','Purchase details entered successfully');
+    }
 
 
 

@@ -58,6 +58,8 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
+        if(auth())
+            return redirect('/current');
         return view('login');
     }
     public function logout(Request $request)

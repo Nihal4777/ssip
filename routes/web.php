@@ -51,6 +51,9 @@ Route::group(['middleware'=>["auth","role:teacher"]],function() {
     Route::get('consumption',[Controller::class,'consumption_index']);
     Route::post('consumption',[Controller::class,'consumption_store']);
 
+    Route::get('purchase',[Controller::class,'purchase_index']);
+    Route::post('purchase',[Controller::class,'purchase_store']);
+
     Route::resource("deliveries",DeliveriesController::class);
 
 });

@@ -285,6 +285,13 @@
           <i class="bi bi-card-list"></i>
           <span>Enter consumption</span>
         </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/purchase">
+          <i class="bi bi-card-list"></i>
+          <span>Enter Purchases</span>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="/current">
           <i class="bi bi-house"></i>
