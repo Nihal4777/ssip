@@ -8,6 +8,7 @@ use App\Models\ConsumptionDocument;
 use App\Models\Purchase;
 use App\Models\PurchaseDocument;
 use App\Models\Stock;
+use DateInterval;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -24,11 +25,6 @@ class Controller extends BaseController
     { 
         return view('dashboard');
     }
-
-
-
-
-
     /* ----------------------------- Aanganwadi only ---------------------------- */
     public function assigned()
     {
@@ -42,6 +38,16 @@ class Controller extends BaseController
 
         $cat=Categories::all();
         return view('consumptionentry',compact('cat'));
+    }
+    public function consumption_view(Request $request){
+        $user=auth()->user();
+        $cat=Categories::all();
+        $date=$request->date;
+        if(empty($date))
+            $date=date('Y-m-d',strtotime('yesterday'));
+        $consumptions=DB::table('consumptions as g')->where(['center_id'=>auth()->user()->center_id,'date'=>$date])->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->get(['g.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','qnt']);
+        $cds=ConsumptionDocument::where(['center_id'=>auth()->user()->center_id,'date'=>$date])->get();
+        return view('consumptionhistory',compact('cat','consumptions','date','cds'));
     }
     public function consumption_store(Request $request)
     {

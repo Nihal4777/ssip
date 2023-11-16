@@ -2,7 +2,7 @@
 @section('main')
 
     <div class="card-body">
-    <h5 class="card-title"> <i class="bi bi-cart-check-fill"></i> Pending Stock</h5>
+    <h5 class="card-title"> <i class="bi bi-cart-check-fill"></i> Past Deliveries</h5>
     <!-- Table with hoverable rows -->
     <form action="deliveries" method="post">
         {{ csrf_field() }}

@@ -187,7 +187,7 @@
             <h5 class="modal-title" id="modalopenLabel">AnganWadi Name</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <form action="{{route('stocks.store')}}" method="post">
+          <form action="{{route('grants.store')}}" method="post">
               <input type="hidden" name="center_code" value="{{$center->id}}"/>
               <div class="modal-body">
               <ul class="list">

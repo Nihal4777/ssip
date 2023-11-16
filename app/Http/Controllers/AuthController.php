@@ -31,10 +31,7 @@ class AuthController extends Controller
             ];
             if(Auth::attempt($credentials)) {
                 $user=auth()->user();
-                if($user->hasRole('admin'))
-                    return redirect('/centers');
-                else
-                 return redirect('/assigned');
+                    return redirect('/');
             }
             
             return back()->withErrors([ "Invalid email and password" ]);
@@ -58,8 +55,8 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
-        if(auth())
-            return redirect('/current');
+        if(auth()->check())
+            return redirect('/');
         return view('login');
     }
     public function logout(Request $request)

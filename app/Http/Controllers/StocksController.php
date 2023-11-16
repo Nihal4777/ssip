@@ -73,14 +73,14 @@ class StocksController extends Controller
      */
     public function store(Request $request)
     {
-        $stock=new Stock;
-        $stock->item_cat=$request->cat;
-        $stock->qnt=$request->qnt;
-        $stock->item_name=$request->item_name;
-        $stock->center_id=$request->center_code;
-        $stock->status=0;
-        $stock->save();
-        return Redirect::back()->with('message','Item Added');
+        // $stock=new Stock;
+        // $stock->item_cat=$request->cat;
+        // $stock->qnt=$request->qnt;
+        // $stock->item_name=$request->item_name;
+        // $stock->center_id=$request->center_code;
+        // $stock->status=0;
+        // $stock->save();
+        // return Redirect::back()->with('message','Item Added');
     }
 
     /**

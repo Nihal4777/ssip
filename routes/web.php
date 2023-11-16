@@ -23,11 +23,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
-
-
 Route::get("login",[AuthController::class,'login'])->name('login');
 Route::get("dashboard",[Controller::class,'dashboard'])->name('dashboard');
 
@@ -44,22 +39,21 @@ Route::resource("categories",CategoriesController::class);
 
 
 
-Route::get("current",[StocksController::class,'current']);
-
 Route::group(['middleware'=>["auth","role:teacher"]],function() {
+    Route::get("current",[StocksController::class,'current']);
     Route::get("assigned",[Controller::class,'assigned']);
+
+
     Route::get('consumption',[Controller::class,'consumption_index']);
+    Route::get('consumption/history',[Controller::class,'consumption_view']);
+    Route::post('consumption/history',[Controller::class,'consumption_view']);
     Route::post('consumption',[Controller::class,'consumption_store']);
+
 
     Route::get('purchase',[Controller::class,'purchase_index']);
     Route::post('purchase',[Controller::class,'purchase_store']);
-
     Route::resource("deliveries",DeliveriesController::class);
-
 });
-
-
-
 
 Route::group([ "middleware" => ["auth","role:admin"]], function () {
     Route::resource("centers",CentersController::class);
@@ -77,5 +71,11 @@ Route::group([ "middleware" => ["auth","role:admin"]], function () {
         }
         $data.='</select>';
         return $data;
+    });
+});
+
+Route::group([ "middleware" => ["auth"]], function () {
+    Route::get('/', function () {
+        return view('admin.dashboard');
     });
 });
