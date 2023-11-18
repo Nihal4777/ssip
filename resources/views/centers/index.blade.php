@@ -2,7 +2,7 @@
 @section('main')
 
 
-    <div class="">
+    {{-- <div class="">
         <div class="card-body">
           <h5 class="card-title"><i class="ri-filter-off-line"></i>  Search Anganwadi</h5>
     
@@ -32,7 +32,7 @@
               </div>
           </form>
         </div>
-</div>
+</div> --}}
    
     <div class="addbutton card-body" style="margin: 20px auto;">
          <!-- Button trigger modal -->    
@@ -135,7 +135,7 @@
     <div class="m-3" id='alldiv' style="display: none">
       <button class="btn btn-primary ms-auto me-2" form="this" style="margin-left: auto;display: block;" data-bs-toggle="modal" data-bs-target="#grandModal" onclick="document.getElementById('flag').value=1">Grant Stocks</button>
     </div>
-        <table class="table table-striped">
+        <table class="table table-striped" id="myTable">
         <!-- Modal -->
         <div class="modal fade" id="modalopen" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -195,8 +195,8 @@
                 <ul class="dropdown-menu">
                   <li><button class="dropdown-item" href="#" data-centercode="{{$d->id}}"  data-bs-toggle="modal"
                     data-bs-target="#grandModal" onclick="updateCode(event)"  >Grant Stocks</button></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="/centers/{{$d->id}}/stock">View Stock</a></li>
+                  <li><a class="dropdown-item" href="/centers/{{$d->id}}/consumption">View Consumption History</a></li>
                 </ul>
               </div>
             </td>
@@ -207,7 +207,7 @@
 
         
       </table>
-      <nav style="float: right;margin: auto 5%;" aria-label="...">
+      {{-- <nav style="float: right;margin: auto 5%;" aria-label="...">
         <ul class="pagination">
           <li class="page-item disabled">
             <span class="page-link">Previous</span>
@@ -221,7 +221,7 @@
             <a class="page-link" href="#">Next</a>
           </li>
         </ul>
-      </nav>
+      </nav> --}}
 
 
       <div class="modal fade" id="grandModal" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true">
@@ -274,6 +274,7 @@
       </div>
 @endsection
 @push("scripts")
+<script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript">
 
   function updateCode(e){
@@ -281,6 +282,11 @@
     $('#flag').val(0);
       }
       $(document).ready(function () {  
+        let table = new DataTable('#myTable',{
+          columnDefs: [
+                { targets: [-1,-2], orderable: false },
+          ]
+        });
           $('.cat').on('change', function () {
               var selectVal = this.selectedOptions[0].value;
               var formData = {

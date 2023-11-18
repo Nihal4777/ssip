@@ -33,9 +33,7 @@ Route::get("supplier/done",[StocksController::class,'done']);
 Route::post("login",[AuthController::class,'login_attempt']);
 Route::get("logout",[AuthController::class,'logout']);
 
-Route::resource("categories",CategoriesController::class);
 
-// Route::post("updateIds",[StocksController::class,'updateIds']);
 
 
 
@@ -56,11 +54,14 @@ Route::group(['middleware'=>["auth","role:teacher"]],function() {
 });
 
 Route::group([ "middleware" => ["auth","role:admin"]], function () {
+    Route::resource("categories",CategoriesController::class);
     Route::resource("centers",CentersController::class);
     Route::resource("items",ItemsController::class);
     Route::resource("grants",GrantsController::class);
     Route::resource("stocks",StocksController::class);
-    
+    Route::get("centers/{id}/consumption",[CentersController::class,'consumption_view']);
+    Route::get("centers/{id}/stock",[CentersController::class,'stock_view']);
+    Route::post("centers/{id}/consumption",[CentersController::class,'consumption_view']);
     
     
     Route::get('getItem/{id}',function($id){

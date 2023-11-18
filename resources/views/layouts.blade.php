@@ -31,6 +31,7 @@
   <!-- Template Main CSS File -->
   <link href="/assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/fonts/icofont.css">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 </head>
 
 <body>
@@ -62,7 +63,7 @@
           </a>
         </li><!-- End Search Icon-->
 
-        <li class="nav-item dropdown">
+        {{-- <li class="nav-item dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-bell"></i>
@@ -135,7 +136,7 @@
 
           </ul><!-- End Notification Dropdown Items -->
 
-        </li><!-- End Notification Nav -->
+        </li><!-- End Notification Nav --> --}}
 
 
         <li class="nav-item dropdown pe-3">
@@ -215,16 +216,17 @@
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" href="/centers">
+          <i class="bi bi-house"></i>
+          <span>Aanganwadis</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
         <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#" aria-expanded="true">
           <i class="bi bi-menu-button-wide"></i><span>Manage</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav" style="">
-          <li>
-            <a href="/centers" class="active">
-              <i class="bi bi-circle"></i><span>Aanganwadis</span>
-            </a>
-          </li>
-        
+        <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav" style="">        
           <li>
             <a href="/items">
               <i class="bi bi-circle"></i><span>Suppliers</span>
@@ -238,13 +240,6 @@
           <li>
             <a href="/items">
               <i class="bi bi-circle"></i><span>Items</span>
-            </a>
-          </li>
-
-         
-          <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Invoices</span>
             </a>
           </li>
         </ul>
