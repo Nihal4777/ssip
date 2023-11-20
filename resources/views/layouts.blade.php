@@ -244,13 +244,13 @@
           </li>
         </ul>
       </li>
-
+{{-- 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-register.html">
           <i class="bi bi-card-list"></i>
           <span>Consumption</span>
         </a>
-      </li><!-- End Register Page Nav -->
+      </li><!-- End Register Page Nav --> --}}
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="/logout">
@@ -291,6 +291,12 @@
         <a class="nav-link collapsed" href="/purchase">
           <i class="bi bi-card-list"></i>
           <span>Enter Purchases</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/purchase/history">
+          <i class="bi bi-card-list"></i>
+          <span>Purchase history</span>
         </a>
       </li>
       <li class="nav-item">

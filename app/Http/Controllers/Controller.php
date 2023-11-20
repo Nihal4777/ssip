@@ -116,6 +116,16 @@ class Controller extends BaseController
             }
         return redirect()->back()->with('success','Purchase details entered successfully');
     }
+    public function purchase_view(Request $request){
+        $user=auth()->user();
+        $cat=Categories::all();
+        $date=$request->date;
+        if(empty($date))
+            $date=date('Y-m-d',strtotime('yesterday'));
+        $consumptions=DB::table('purchases as g')->where(['center_id'=>auth()->user()->center_id,'date'=>$date])->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->get(['g.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','qnt']);
+        $cds=ConsumptionDocument::where(['center_id'=>auth()->user()->center_id,'date'=>$date])->get();
+        return view('purchasehistory',compact('cat','consumptions','date','cds'));
+    }
 
 
 

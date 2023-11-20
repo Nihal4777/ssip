@@ -32,19 +32,19 @@
             <th scope="col">Category</th>
             <th scope="col">Name</th>
             <th scope="col">Quantity</th>
-            <th scope="col">Date</th>
+            <th scope="col">Last updated</th>
           </tr>
         </thead>
         <tbody>
 
-            @foreach ($Pstocks as $stocks)
+            @foreach ($stocks as $i=>$stock)
           <tr>
             <th><i class="bi bi-cup-straw" style="color: tomato;"></i></th>
-            <th scope="row">1</th>
-            <td>{{$stocks->item_cat}}</td>
-            <td>{{$stocks->item_name}}</td>
-            <td>{{$stocks->qnt}}</td>
-            <td>{{$stocks->created_at}}</td>
+            <th scope="row">{{$i+1}}</th>
+            <td>{{$stock->cname}}</td>
+            <td>{{$stock->itemName}}</td>
+            <td>{{$stock->qnt}}</td>
+            <td>{{$stock->updated_at}}</td>
           </tr>
           @endforeach
         </tbody>
@@ -115,23 +115,26 @@
       <table class="table table-hover">
         <thead class="table-success">
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Anganwadi Name</th>
+            <th><i class="bi bi-three-dots-vertical"></i></th>
+            <th scope="col">Grant Id.</th>
             <th scope="col">Category</th>
-            <th scope="col">Amount</th>
-            <th>Date</th>
-            <th scope="col" colspan="3"></th>
+            <th scope="col">Item</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Fulfilled</th>
+            <th scope="col">Date</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-            @foreach ($Pstocks as $stocks)
+            @foreach ($grants as $g)
             <tr>
               <th><i class="bi bi-cup-straw" style="color: tomato;"></i></th>
-              <th scope="row">1</th>
-              <td>{{$stocks->item_cat}}</td>
-              <td>{{$stocks->item_name}}</td>
-              <td>{{$stocks->qnt}}</td>
-              <td>{{$stocks->created_at}}</td>
+              <th scope="row">{{$g->id}}</th>
+              <td>{{$g->cname}}</td>
+              <td>{{$g->itemName}}</td>
+              <td>{{$g->qnt}}</td>
+              <td>{{$g->fulfilled}}</td>
+              <td>{{$g->created_at}}</td>
               <td>Pending</td>
             </tr>
             @endforeach

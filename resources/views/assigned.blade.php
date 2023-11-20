@@ -42,7 +42,7 @@
         {{ csrf_field() }}
     <table class="table table-hover">
     <thead class="table-success">
-        <tr>
+      <tr>
         <th><i class="bi bi-three-dots-vertical"></i></th>
         <th scope="col">Grant Id.</th>
         <th scope="col">Category</th>
@@ -51,7 +51,7 @@
         <th scope="col">Fulfilled</th>
         <th scope="col">Date</th>
         <th scope="col"></th>
-        </tr>
+      </tr>
     </thead>
     <tbody>
         @foreach ($Pstocks as $stocks)

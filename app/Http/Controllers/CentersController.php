@@ -82,8 +82,10 @@ class CentersController extends BaseController
     {
         $user=User::where('center_id',$center->id)->first();
         $cat=Categories::get();
-        $Pstocks=Stock::where(['status'=>0,'center_id'=>$center->id])->get();
-        return view('centers.manage',compact('center','user','cat','Pstocks'));
+        // $Pstocks=Stock::where(['status'=>0,'center_id'=>$center->id])->get();
+        $stocks=DB::table('stocks as d')->where(['d.center_id'=>$center->id,])->join('items as i','d.item_id','i.id')->join('categories as c','category_id','c.id')->get(['d.id as id','i.name as itemName','c.name as cname','d.qnt as qnt','d.updated_at as updated_at']);
+        $grants=DB::table('grants as g')->where(['center_id'=>$center->id,])->whereRaw('g.fulfilled<g.qnt')->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->get(['g.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','qnt','fulfilled']);
+        return view('centers.manage',compact('center','user','cat','grants','stocks'));
     }
 
     public function consumption_view(Request $request,$id)
