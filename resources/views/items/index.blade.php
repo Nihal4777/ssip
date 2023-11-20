@@ -4,14 +4,49 @@
 @section ("page_title", "items")
 
 @section ("main")
-
+<head>
+    <style>
+.card
+{
+    padding:30px;
+}
+.btnadd
+{
+    width:50%;
+    margin:5px auto;
+}
+.table-responsive
+{
+    padding:5px;
+}
+input
+{
+    margin:5px;
+}
+table
+{
+    margin-top:10px;    
+}
+thead
+{
+    background-color:green;
+}
+@media only screen and (max-width: 690px)
+{
+.rspbtn
+{
+    margin:5px;
+} 
+}
+    </style>
+</head>
 <div class="card">
-    <a class="btn btn-primary ml-auto d-block mt-3 mr-3" href="{{route('items.create')}}">Add</a>
+    <a class="btn btn-primary ml-auto d-block mt-3 mr-3 btnadd" href="{{route('items.create')}}"> <i class='bi bi-plus-circle'></i> Add</a>
     <div class="card-block">
         <div class="table-responsive dt-responsive">
-            <table id="table" class="table table-striped table-hover table-bordered text-center">
-                <thead>
-                    <tr>
+            <table id="table" class="table table-hover  text-center">
+                <thead class="table-success">
+                    <tr >
                         <th>Sr No</th>
                         <th>Category</th>
                         <th>items Name</th>
@@ -25,11 +60,11 @@
                         <td>{{$item->category->name}}</td> 
                         <td>{{$item->name}}</td>
                         <td>
-                            <a href="{{route('items.edit',$item->id)}}" class='btn waves-effect waves-light btn-warning icon-btn btn-icon bs-tooltip' title="Edit">
-                                <i class='icofont icofont-edit'></i>
+                            <a href="{{route('items.edit',$item->id)}}" class='btn waves-effect waves-light btn-warning icon-btn btn-icon bs-tooltip rspbtn' title="Edit">
+                                <i class='bi bi-pencil-square'></i>
                             </a>
-                            <button href="" class='btn waves-effect waves-light btn-danger icon-btn btn-icon bs-tooltip delete_btn' title="Delete" data-id="{{$item->id}}">
-                                <i class='icofont icofont-close'></i>
+                            <button href="" class='btn waves-effect waves-light btn-danger icon-btn btn-icon bs-tooltip delete_btn rspbtn' title="Delete" data-id="{{$item->id}}">
+                                <i class='bi bi-backspace-reverse'></i>
                             </button>
                         </td>
                     </tr>
@@ -39,6 +74,7 @@
                     <tr>
                         <th>Sr No</th>
                         <th>Diagram Name</th>
+                        <th>item Name</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>

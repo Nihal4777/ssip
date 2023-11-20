@@ -1,6 +1,11 @@
 @extends('layouts')
-@push('styles')
+
+@section('main')
+
+<head>
 <style>
+  
+
   .card-body {
     padding: 16px;
   }
@@ -23,16 +28,37 @@
   }
 
   .btn-group {
-    justify-content: flex-start;
+    float:right;
+    /* justify-content: f; */
   }
 
   .btn-group button {
     margin-right: 16px;
   }
-</style>
-@endpush
+  .card 
+  {
+    margin-top:30px;
 
-@section('main')
+  }
+  .customtable
+  {
+    width:90%;
+    margin:5px auto;
+    overflow: hidden;
+  }
+  .doc
+  {
+    margin:15px 20px;
+  }
+  .add
+  {
+    width:50%;
+    float:right;
+    margin:15px;
+  }
+</style>
+</head>
+
 <div class="pagetitle">
     <h1>Consumption</h1>
 </div><!-- End Page Title -->
@@ -63,7 +89,7 @@
                 <div class="col-lg-11">
                   <!-- Customers Card -->
                   <div class="col-xxl col-xl">
-                    <div class="card info-card customers-card card-center">
+                    <div class=" info-card customers-card card-center">
                         <form  method="get" id="firstForm">
                         <div class="card-body text-align: center" style="padding-top: 10px;">
                         <div class="row">
@@ -91,16 +117,16 @@
                             <label for="quantity">Quantity</label>
                             <input type="number" class="form-control" id="quantity" placeholder="Enter quantity">
                           </div>
-                          <div class="btn-group d-flex justify-content-start" style="padding-top: 20px;">
-                            <button type="submit" class="btn btn-primary" id="add-button">Add</button>
+                          <div class="btn-group justify-content-start" style="padding-top: 20px;">
+                            <button type="submit" class="btn btn-primary add" id="add-button" style="float:right; width:100px;">Add</button>
                             {{-- <button type="button" class="btn btn-danger" id="remove-button">Remove</button> --}}
                           </div>
                         </div>
                       </form>
                     </div>
                     <form method="post" id="secondForm" enctype="multipart/form-data">
-                    <table class="table table-striped" style="margin-top: 20px;">
-                      <thead>
+                    <table class="table customtable" style="margin-top: 20px;">
+                      <thead class="table-success">
                         <tr>
                           <th>Category</th>
                           <th>Item</th>
@@ -119,7 +145,7 @@
 
                 </div><!-- End Customers Card -->
 
-                <div class="col-12">
+                <div class="col-12 doc">
                   <label for="yourName" class="form-label">Supportive documents</label>
                   <div class="col-sm-10">
                     <input type="file" form="secondForm" multiple id="documents" name="documents[]" accept="application/pdf,.doc,.docx,.xls,.csv,.rtf,image/*,video/*" required>

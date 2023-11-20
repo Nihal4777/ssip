@@ -1,8 +1,19 @@
 @extends('layouts')
 @section('main')
+    <head>
+    <style>
+body
+{}
+@media screen and (max-width: 600px) {
+  .table-responsive
+  {
+    display:block;
+  }
+}
 
-
-    {{-- <div class="">
+    </style>
+    </head>
+    <div class="">
         <div class="card-body">
           <h5 class="card-title"><i class="ri-filter-off-line"></i>  Search Anganwadi</h5>
     
@@ -32,12 +43,12 @@
               </div>
           </form>
         </div>
-</div> --}}
+</div>
    
     <div class="addbutton card-body" style="margin: 20px auto;">
          <!-- Button trigger modal -->    
          
-        <button type="submit" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#verticalycentered"> <i class="bx bxs-plus-circle"></i>  Add Anganwadi</button>
+        <button type="submit" class="btn btn-primary redbutton"data-bs-toggle="modal" data-bs-target="#verticalycentered"> <i class="bx bxs-plus-circle"></i>  Add Anganwadi</button>
         <!-- Modal -->
         <div class="modal fade" id="verticalycentered" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
@@ -135,7 +146,10 @@
     <div class="m-3" id='alldiv' style="display: none">
       <button class="btn btn-primary ms-auto me-2" form="this" style="margin-left: auto;display: block;" data-bs-toggle="modal" data-bs-target="#grandModal" onclick="document.getElementById('flag').value=1">Grant Stocks</button>
     </div>
-        <table class="table table-striped" id="myTable">
+        <div class="container-resp table-responsive dt-responsive">
+
+        
+        <table class="table table-striped    ">
         <!-- Modal -->
         <div class="modal fade" id="modalopen" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -161,12 +175,12 @@
             </div>
           </div>
         </div>
-        <thead>
+        <thead class="table-success bgred">
           <tr style="height: 50px;">
             <th scope="col"><div class="form-check">
               <input class="form-check-input checkall" type="checkbox" id="flexCheckDefault">
             </div></th>
-            <th scope="col">Sr.No.</th>
+            <th scope="col" >Sr.No.</th>
             <th scope="col">Code</th>
             <th scope="col">Anganwadi Name</th>
             <th scope="col">Area</th>
@@ -181,22 +195,22 @@
             <td><div class="form-check">
               <input class="form-check-input checkcenterids" form="grantForm" type="checkbox" name="centerids[]" value="{{$d->id}}" id="flexCheckDefault">
             </div></td>
-            <th scope="row">{{$i+1}}</th>
-            <td>{{$d->code}}</td>
-            <td>{{$d->center_name}}</td>
-            <td>{{$d->area}}</td>
-            <td>{{$i+1}}</td>
-            <td><a href='{{"/centers/".$d->id}}' class="btn btn-primary">Show</a></td>
+            <th scope="row" data-label="Sr.No.">{{$i+1}}</th>
+            <td data-label="Code">{{$d->code}}</td>
+            <td data-label="Anganwadi Name">{{$d->center_name}}</td>
+            <td data-label="Area">{{$d->area}}</td>
+            <td data-label="Period">{{$i+1}}</td>
+            <td><a href='{{"/centers/".$d->id}}' class="redbutton btn btn-primary">Show</a></td>
             <td>
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle greybutton" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Manage
                 </button>
                 <ul class="dropdown-menu">
                   <li><button class="dropdown-item" href="#" data-centercode="{{$d->id}}"  data-bs-toggle="modal"
                     data-bs-target="#grandModal" onclick="updateCode(event)"  >Grant Stocks</button></li>
-                    <li><a class="dropdown-item" href="/centers/{{$d->id}}/stock">View Stock</a></li>
-                  <li><a class="dropdown-item" href="/centers/{{$d->id}}/consumption">View Consumption History</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </div>
             </td>
@@ -207,7 +221,8 @@
 
         
       </table>
-      {{-- <nav style="float: right;margin: auto 5%;" aria-label="...">
+      </div>
+      <nav style="float: right;margin: auto 5%;" aria-label="...">
         <ul class="pagination">
           <li class="page-item disabled">
             <span class="page-link">Previous</span>
@@ -221,7 +236,7 @@
             <a class="page-link" href="#">Next</a>
           </li>
         </ul>
-      </nav> --}}
+      </nav>
 
 
       <div class="modal fade" id="grandModal" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true">
@@ -274,7 +289,6 @@
       </div>
 @endsection
 @push("scripts")
-<script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript">
 
   function updateCode(e){
@@ -282,11 +296,6 @@
     $('#flag').val(0);
       }
       $(document).ready(function () {  
-        let table = new DataTable('#myTable',{
-          columnDefs: [
-                { targets: [-1,-2], orderable: false },
-          ]
-        });
           $('.cat').on('change', function () {
               var selectVal = this.selectedOptions[0].value;
               var formData = {

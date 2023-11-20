@@ -4,11 +4,31 @@
 @section ("page_title", "Categories")
 
 @section ("main")
-
+<style>
+.btnadd
+{
+    width:50%;
+    margin:5px auto;
+}  
+.card-block
+{
+    padding:20px;
+} 
+table
+{
+    margin:10px auto;
+ 
+}
+.rspbtn
+{
+    margin:5px;
+} 
+</style>
 <div class="card">
-    <a class="btn btn-primary ml-auto d-block mt-3 mr-3" href="{{route('categories.create')}}">Add</a>
+    <a class="btn btn-primary ml-auto d-block mt-3 mr-3 btnadd" href="{{route('categories.create')}}"><i class='bi bi-plus-circle'></i> Add</a>
     <div class="card-block">
         <div class="table-responsive dt-responsive">
+        <h5 class="card-title"><i class="bi bi-palette2"></i>  Categories</h5>
             <table id="table" class="table table-striped table-hover table-bordered text-center">
                 <thead>
                     <tr>
@@ -23,11 +43,11 @@
                         <td>{{$index+1}}</td>
                         <td>{{$category->name}}</td>
                         <td>
-                            <a href="{{route('categories.edit',$category->id)}}" class='btn waves-effect waves-light btn-warning icon-btn btn-icon bs-tooltip' title="Edit">
-                                <i class='icofont icofont-edit'></i>
+                            <a href="{{route('categories.edit',$category->id)}}" class='btn rspbtn waves-effect waves-light btn-warning icon-btn btn-icon bs-tooltip' title="Edit">
+                            <i class='bi bi-pencil-square'></i>
                             </a>
-                            <button href="{{""}}" class='btn waves-effect waves-light btn-danger icon-btn btn-icon bs-tooltip delete_btn' title="Delete" data-id="{{$category->id}}">
-                                <i class='icofont icofont-close'></i>
+                            <button href="{{""}}" class='btn rspbtn waves-effect waves-light btn-danger icon-btn btn-icon bs-tooltip delete_btn' title="Delete" data-id="{{$category->id}}">
+                                <i class='bi bi-trash'></i>
                             </button>
                         </td>
                     </tr>

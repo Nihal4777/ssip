@@ -41,5 +41,5 @@
         </div>
     </div>
     
-    <button type="submit" class="btn btn-primary">{{ $type == "add" ? "Add" : "Update" }}</button>
+    <button type="submit" class="btn btn-primary">{{ $type == "add" ? "Add suppliers " : "Update" }}</button>
 </form>

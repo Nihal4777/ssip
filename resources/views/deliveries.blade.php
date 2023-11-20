@@ -1,6 +1,15 @@
 @extends('layouts')
 @section('main')
 
+    <head>
+        <style>
+body
+{
+    background-color:black;
+}
+        </style>
+
+    </head>
     <div class="card-body">
     <h5 class="card-title"> <i class="bi bi-cart-check-fill"></i> Past Deliveries</h5>
     <!-- Table with hoverable rows -->

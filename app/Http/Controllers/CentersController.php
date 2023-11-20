@@ -5,17 +5,14 @@ namespace App\Http\Controllers;
 use App\Mail\CenterAdded;
 use App\Models\Categories;
 use App\Models\Center;
-use App\Models\ConsumptionDocument;
 use App\Models\Item;
 use App\Models\Stock;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-use Illuminate\Routing\Controller as BaseController;
-class CentersController extends BaseController
+class CentersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -82,28 +79,8 @@ class CentersController extends BaseController
     {
         $user=User::where('center_id',$center->id)->first();
         $cat=Categories::get();
-        // $Pstocks=Stock::where(['status'=>0,'center_id'=>$center->id])->get();
-        $stocks=DB::table('stocks as d')->where(['d.center_id'=>$center->id,])->join('items as i','d.item_id','i.id')->join('categories as c','category_id','c.id')->get(['d.id as id','i.name as itemName','c.name as cname','d.qnt as qnt','d.updated_at as updated_at']);
-        $grants=DB::table('grants as g')->where(['center_id'=>$center->id,])->whereRaw('g.fulfilled<g.qnt')->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->get(['g.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','qnt','fulfilled']);
-        return view('centers.manage',compact('center','user','cat','grants','stocks'));
-    }
-
-    public function consumption_view(Request $request,$id)
-    {
-        $user=auth()->user();
-        $cat=Categories::all();
-        $date=$request->date;
-        if(empty($date))
-            $date=date('Y-m-d',strtotime('yesterday'));
-        $consumptions=DB::table('consumptions as g')->where(['center_id'=>$id,'date'=>$date])->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->get(['g.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','qnt']);
-        $cds=ConsumptionDocument::where(['center_id'=>$id,'date'=>$date])->get();
-        return view('consumptionhistory',compact('cat','consumptions','date','cds'));
-    }
-    public function stock_view(Request $request,$id)
-    {
-        $user=auth()->user();
-        $stocks=DB::table('stocks as d')->where(['d.center_id'=>$id,])->join('items as i','d.item_id','i.id')->join('categories as c','category_id','c.id')->get(['d.id as id','i.name as itemName','c.name as cname','d.qnt as qnt','d.updated_at as updated_at']);
-        return view('current',compact('stocks'));
+        $Pstocks=Stock::where(['status'=>0,'center_id'=>$center->id])->get();
+        return view('centers.manage',compact('center','user','cat','Pstocks'));
     }
 
     /**

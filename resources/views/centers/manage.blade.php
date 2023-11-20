@@ -1,6 +1,27 @@
 @extends('layouts')
 @section('main')
-    <div class="card">
+    <head>
+      <style>
+.custom-responsive
+{
+  letter-spacing:1px;
+}
+hr
+{
+  width:50%;
+  opacity: 0.1;
+}
+.custom li button{
+  margin:5px 10px;
+}
+.custom li button:hover{
+    
+  filter: grayscale(0.2); 
+  transition:0.3s all;
+}
+      </style>
+    </head>
+    <div class="card custom-responsive">
       <div class="card-body">
         <h5 class="card-title" style="text-align: center;">Arvalli Anganwadi</h5>
         <ul class="custom" style="margin: 10px auto;">
@@ -10,10 +31,13 @@
           <li class="list-group-item"><i class="bi bi-pin-angle"></i></i><b> Area :</b> {{$center->area}} </li>
           <li class="list-group-item"><i class="bi bi-pin-map-fill"></i><b> City</b> Arvalli</li>
           <li class="list-group-item"><i class="bi bi-house"></i><b> Location :</b> {{$center->address}}
-
+       
+          <hr>
             <span style="margin: auto 5%;">
-              {{-- <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
-                data-bs-target="#verticalycentetomato"> <i class="bi bi-clock-history"></i> History</button></span> --}}
+            <button type="submit" class="btn btn-primary" style="font-size:20px;" data-bs-toggle="modal"
+                data-bs-target="#verticalycentetomato"> <i class="ri ri-mail-send-fill"></i> </button>
+              <button type="submit" class="btn " style="background-color: rgb(35, 187, 35);color:white;font-size:20px;" data-bs-toggle="modal"
+                data-bs-target="#verticalycentetomato"> <i class="ri ri-whatsapp-fill"></i> </button></span> 
           </li>
         </ul><!-- End List group With Icons -->
       </div>
@@ -32,19 +56,19 @@
             <th scope="col">Category</th>
             <th scope="col">Name</th>
             <th scope="col">Quantity</th>
-            <th scope="col">Last updated</th>
+            <th scope="col">Date</th>
           </tr>
         </thead>
         <tbody>
 
-            @foreach ($stocks as $i=>$stock)
+            @foreach ($Pstocks as $stocks)
           <tr>
             <th><i class="bi bi-cup-straw" style="color: tomato;"></i></th>
-            <th scope="row">{{$i+1}}</th>
-            <td>{{$stock->cname}}</td>
-            <td>{{$stock->itemName}}</td>
-            <td>{{$stock->qnt}}</td>
-            <td>{{$stock->updated_at}}</td>
+            <th scope="row">1</th>
+            <td>{{$stocks->item_cat}}</td>
+            <td>{{$stocks->item_name}}</td>
+            <td>{{$stocks->qnt}}</td>
+            <td>{{$stocks->created_at}}</td>
           </tr>
           @endforeach
         </tbody>
@@ -71,6 +95,7 @@
     <div class="card-body">
       <h5 class="card-title"> <i class="bi bi-cart-check-fill"></i> Invoices</h5>
       <!-- Table with hoverable rows -->
+      <div class="table-responsive">
       <table class="table table-hover">
         <thead class="table-success">
           <tr>
@@ -100,6 +125,7 @@
           
         </tbody>
       </table>
+      </div>
 
       
       <td><button type="submit" class="btn btn-primary" data-bs-toggle="modal"
@@ -110,41 +136,38 @@
     <!--Invoice---------  -->
     <div class="card-body">
       <h5 class="card-title"> <i class="bi bi-calculator"></i>Assigned Stocks</h5>
-
+      <div class="table-responsive">
       <!-- Table with hoverable rows -->
       <table class="table table-hover">
         <thead class="table-success">
           <tr>
-            <th><i class="bi bi-three-dots-vertical"></i></th>
-            <th scope="col">Grant Id.</th>
+            <th scope="col">ID</th>
+            <th scope="col">Anganwadi Name</th>
             <th scope="col">Category</th>
-            <th scope="col">Item</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Fulfilled</th>
-            <th scope="col">Date</th>
-            <th scope="col"></th>
+            <th scope="col">Amount</th>
+            <th>Date</th>
+            <th scope="col" colspan="3"></th>
           </tr>
         </thead>
         <tbody>
-            @foreach ($grants as $g)
+            @foreach ($Pstocks as $stocks)
             <tr>
               <th><i class="bi bi-cup-straw" style="color: tomato;"></i></th>
-              <th scope="row">{{$g->id}}</th>
-              <td>{{$g->cname}}</td>
-              <td>{{$g->itemName}}</td>
-              <td>{{$g->qnt}}</td>
-              <td>{{$g->fulfilled}}</td>
-              <td>{{$g->created_at}}</td>
+              <th scope="row">1</th>
+              <td>{{$stocks->item_cat}}</td>
+              <td>{{$stocks->item_name}}</td>
+              <td>{{$stocks->qnt}}</td>
+              <td>{{$stocks->created_at}}</td>
               <td>Pending</td>
             </tr>
             @endforeach
 
         </tbody>
       </table>
-
-
     </div>
 
+    </div>
+    <div class="table-responsive">
       <!-- Table with hoverable rows -->
       {{-- <table class="table table-hover">
         <thead class="table-success">
@@ -181,7 +204,9 @@
           </tr>
 
         </tbody>
-      </table> --}}
+      </table>
+      </div>
+      --}}
     </div>
     <div class="modal fade" id="grandModal" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true">
       <div class="modal-dialog">
