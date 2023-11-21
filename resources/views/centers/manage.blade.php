@@ -1,6 +1,25 @@
 @extends('layouts')
 @section('main')
-    <div class="card">
+<style>
+  .custom-responsive
+  {
+    letter-spacing:1px;
+  }
+  hr
+  {
+    width:50%;
+    opacity: 0.1;
+  }
+  .custom li button{
+    margin:5px 10px;
+  }
+  .custom li button:hover{
+      
+    filter: grayscale(0.2); 
+    transition:0.3s all;
+  }
+        </style>
+    <div class="card custom-responsive">
       <div class="card-body">
         <h5 class="card-title" style="text-align: center;">Arvalli Anganwadi</h5>
         <ul class="custom" style="margin: 10px auto;">
@@ -11,9 +30,14 @@
           <li class="list-group-item"><i class="bi bi-pin-map-fill"></i><b> City</b> Arvalli</li>
           <li class="list-group-item"><i class="bi bi-house"></i><b> Location :</b> {{$center->address}}
 
+            <hr>
             <span style="margin: auto 5%;">
               {{-- <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
                 data-bs-target="#verticalycentetomato"> <i class="bi bi-clock-history"></i> History</button></span> --}}
+            <button type="submit" class="btn btn-primary" style="font-size:20px;" data-bs-toggle="modal"
+                data-bs-target="#verticalycentetomato"> <i class="ri ri-mail-send-fill"></i> </button>
+              <button type="submit" class="btn " style="background-color: rgb(35, 187, 35);color:white;font-size:20px;" data-bs-toggle="modal"
+                data-bs-target="#verticalycentetomato"> <i class="ri ri-whatsapp-fill"></i> </button></span> 
           </li>
         </ul><!-- End List group With Icons -->
       </div>
@@ -24,6 +48,7 @@
       <h5 class="card-title"><i class="ri-archive-fill"></i> Current Stock</h5>
 
       <!-- Table with hoverable rows -->
+      
       <table class="table table-hover">
         <thead class="table-success">
           <tr>
@@ -110,38 +135,38 @@
     <!--Invoice---------  -->
     <div class="card-body">
       <h5 class="card-title"> <i class="bi bi-calculator"></i>Assigned Stocks</h5>
-
+      <div class="table-responsive">
       <!-- Table with hoverable rows -->
-      <table class="table table-hover">
-        <thead class="table-success">
-          <tr>
-            <th><i class="bi bi-three-dots-vertical"></i></th>
-            <th scope="col">Grant Id.</th>
-            <th scope="col">Category</th>
-            <th scope="col">Item</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Fulfilled</th>
-            <th scope="col">Date</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-            @foreach ($grants as $g)
+        <table class="table table-hover">
+          <thead class="table-success">
             <tr>
-              <th><i class="bi bi-cup-straw" style="color: tomato;"></i></th>
-              <th scope="row">{{$g->id}}</th>
-              <td>{{$g->cname}}</td>
-              <td>{{$g->itemName}}</td>
-              <td>{{$g->qnt}}</td>
-              <td>{{$g->fulfilled}}</td>
-              <td>{{$g->created_at}}</td>
-              <td>Pending</td>
+              <th><i class="bi bi-three-dots-vertical"></i></th>
+              <th scope="col">Grant Id.</th>
+              <th scope="col">Category</th>
+              <th scope="col">Item</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Fulfilled</th>
+              <th scope="col">Date</th>
+              <th scope="col"></th>
             </tr>
-            @endforeach
+          </thead>
+          <tbody>
+              @foreach ($grants as $g)
+              <tr>
+                <th><i class="bi bi-cup-straw" style="color: tomato;"></i></th>
+                <th scope="row">{{$g->id}}</th>
+                <td>{{$g->cname}}</td>
+                <td>{{$g->itemName}}</td>
+                <td>{{$g->qnt}}</td>
+                <td>{{$g->fulfilled}}</td>
+                <td>{{$g->created_at}}</td>
+                <td>Pending</td>
+              </tr>
+              @endforeach
 
-        </tbody>
-      </table>
-
+          </tbody>
+        </table>
+      </div>
 
     </div>
 

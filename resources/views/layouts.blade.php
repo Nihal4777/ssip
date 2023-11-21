@@ -32,6 +32,12 @@
   <link href="/assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/fonts/icofont.css">
   <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+  <style>
+    .actives
+    {
+      color:#F05454;
+    }
+  </style>
 </head>
 
 <body>
@@ -209,7 +215,7 @@
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/dashboard">
+        <a class="nav-link collapsed" href="/">
           <i class="bi bi-house"></i>
           <span>Home</span>
         </a>

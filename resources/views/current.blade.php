@@ -5,7 +5,7 @@
     <h1>Stock Details</h1>
   </div><!-- End Page Title -->
 
-<div class="card-body">
+<div class="card-body table-responsive">
     <h5 class="card-title"> <i class="bi bi-cart-check-fill"></i> Current Stock </h5>
     <!-- Table with hoverable rows -->
     <table class="table table-hover">

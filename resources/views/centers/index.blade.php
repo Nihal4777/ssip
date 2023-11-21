@@ -1,6 +1,15 @@
 @extends('layouts')
 @section('main')
-
+<style>
+  body
+  {}
+  @media screen and (max-width: 600px) {
+    .table-responsive
+    {
+      display:block;
+    }
+  }
+  </style>
 
     {{-- <div class="">
         <div class="card-body">
@@ -37,7 +46,7 @@
     <div class="addbutton card-body" style="margin: 20px auto;">
          <!-- Button trigger modal -->    
          
-        <button type="submit" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#verticalycentered"> <i class="bx bxs-plus-circle"></i>  Add Anganwadi</button>
+        <button type="submit" class="btn btn-primary redbutton"data-bs-toggle="modal" data-bs-target="#verticalycentered"> <i class="bx bxs-plus-circle"></i>  Add Anganwadi</button>
         <!-- Modal -->
         <div class="modal fade" id="verticalycentered" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
@@ -135,7 +144,10 @@
     <div class="m-3" id='alldiv' style="display: none">
       <button class="btn btn-primary ms-auto me-2" form="this" style="margin-left: auto;display: block;" data-bs-toggle="modal" data-bs-target="#grandModal" onclick="document.getElementById('flag').value=1">Grant Stocks</button>
     </div>
-        <table class="table table-striped" id="myTable">
+
+
+
+      <table class="table table-striped" id="myTable">
         <!-- Modal -->
         <div class="modal fade" id="modalopen" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -161,7 +173,7 @@
             </div>
           </div>
         </div>
-        <thead>
+        <thead class="table-success bgred">
           <tr style="height: 50px;">
             <th scope="col"><div class="form-check">
               <input class="form-check-input checkall" type="checkbox" id="flexCheckDefault">
@@ -189,7 +201,7 @@
             <td><a href='{{"/centers/".$d->id}}' class="btn btn-primary">Show</a></td>
             <td>
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle greybutton" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Manage
                 </button>
                 <ul class="dropdown-menu">
@@ -207,6 +219,7 @@
 
         
       </table>
+      
       {{-- <nav style="float: right;margin: auto 5%;" aria-label="...">
         <ul class="pagination">
           <li class="page-item disabled">
