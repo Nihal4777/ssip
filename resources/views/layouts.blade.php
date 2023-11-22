@@ -30,13 +30,13 @@
   <link href="/assets/css/fonts/style.css" rel="stylesheet">
   <!-- Template Main CSS File -->
   <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/responsive.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/fonts/icofont.css">
-  <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
   <style>
-    .actives
-    {
-      color:#F05454;
-    }
+.actives
+{
+  color:#F05454;
+}
   </style>
 </head>
 
@@ -69,7 +69,7 @@
           </a>
         </li><!-- End Search Icon-->
 
-        {{-- <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-bell"></i>
@@ -142,7 +142,7 @@
 
           </ul><!-- End Notification Dropdown Items -->
 
-        </li><!-- End Notification Nav --> --}}
+        </li><!-- End Notification Nav -->
 
 
         <li class="nav-item dropdown pe-3">
@@ -215,16 +215,9 @@
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/">
+        <a class="nav-link collapsed" href="/dashboard">
           <i class="bi bi-house"></i>
           <span>Home</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/centers">
-          <i class="bi bi-house"></i>
-          <span>Aanganwadis</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
@@ -232,31 +225,44 @@
         <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#" aria-expanded="true">
           <i class="bi bi-menu-button-wide"></i><span>Manage</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav" style="">        
-          <li>
+        <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav" style="">
+          <li class="Aanganwadis">
+            <a href="/centers">
+              <i class="bi bi-circle"></i><span>Aanganwadis</span>
+            </a>
+          </li>
+        
+          <li class="Suppliers">
             <a href="/items">
               <i class="bi bi-circle"></i><span>Suppliers</span>
             </a>
           </li>
-          <li>
+          <li class="Categories">
             <a href="/categories">
               <i class="bi bi-circle"></i><span>Categories</span>
             </a>
           </li>
-          <li>
+          <li class="Items">
             <a href="/items">
               <i class="bi bi-circle"></i><span>Items</span>
             </a>
           </li>
+
+         
+          <li class="Invoices">
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Invoices</span>
+            </a>
+          </li>
         </ul>
       </li>
-{{-- 
-      <li class="nav-item">
+
+      <li class="nav-item Consumption">
         <a class="nav-link collapsed" href="pages-register.html">
           <i class="bi bi-card-list"></i>
           <span>Consumption</span>
         </a>
-      </li><!-- End Register Page Nav --> --}}
+      </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="/logout">
@@ -275,52 +281,46 @@
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
-      <li class="nav-item">
+      <li class="nav-item Home">
         <a class="nav-link collapsed" href="users-profile.html">
           <i class="bi bi-house"></i>
           <span>Home</span>
         </a>
       </li><!-- End Profile Page Nav -->
-      <li class="nav-item">
+      <li class="nav-item consumption">
         <a class="nav-link collapsed" href="/consumption">
-          <i class="bi bi-card-list"></i>
+          <i class="bi bi-newspaper"></i>
           <span>Enter consumption</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item consumptionh">
         <a class="nav-link collapsed" href="/consumption/history">
-          <i class="bi bi-card-list"></i>
+          <i class="bi bi-clock-history"></i>
           <span>Consumption history</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item Purchases">
         <a class="nav-link collapsed" href="/purchase">
-          <i class="bi bi-card-list"></i>
+          <i class="bi bi-file-earmark-bar-graph"></i>
           <span>Enter Purchases</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/purchase/history">
-          <i class="bi bi-card-list"></i>
-          <span>Purchase history</span>
-        </a>
-      </li>
-      <li class="nav-item">
+      <li class="nav-item Stock">
         <a class="nav-link collapsed" href="/current">
-          <i class="bi bi-house"></i>
+          <i class="bi bi-inboxes-fill"></i>
           <span>Current Stock</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
-      <li class="nav-item">
+      <li class="nav-item AStock">
         <a class="nav-link collapsed" href="/assigned">
-          <i class="bi bi-house"></i>
+          <i class="bi bi-journal-album"></i>
           <span>Assigned Stock</span>
         </a>
       </li><!-- End Profile Page Nav -->
-      <li class="nav-item">
+      <li class="nav-item Deliveries">
         <a class="nav-link collapsed" href="/deliveries">
-          <i class="bi bi-house"></i>
+          <i class="bi bi-pin-map-fill"></i>
           <span>Past Deliveries</span>
         </a>
       </li><!-- End Profile Page Nav -->
