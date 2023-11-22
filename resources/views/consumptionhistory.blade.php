@@ -1,6 +1,8 @@
 @extends('layouts')
-@push('styles')
+<head>
 <style>
+   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+   
   .card-body {
     padding: 16px;
   }
@@ -29,15 +31,40 @@
   .btn-group button {
     margin-right: 16px;
   }
+  
+  .greybutton
+    {
+    background:none;
+    border:none;
+    color:blue;
+    opacity: 0.7;
+    }
+    .custom
+    {
+    background-color:#01987A;
+    }
+  
+    
+    tfoot
+    {
+        text-align:center;
+        opacity:0.7;
+        background:#01987a0b;
+    }
+    .general-table tr:hover
+    {
+        background:#01987a34;
+        transition:0.3s;
+    }
 </style>
-@endpush
+</head>
 
 @section('main')
 <div class="pagetitle">
     <h1>Consumption</h1>
 </div><!-- End Page Title -->
 
-<section class="section dashboard">
+<section class="section dashboard"  style=" font-family: 'Montserrat', sans-serif;">
     <div class="row">
 
       <!-- Left side columns -->
@@ -48,7 +75,7 @@
             <div class="card-body">
 
               <div class="pt-4 pb-2">
-                <h5 class="card-title text-center pb-0 fs-4">Consumption History</h5>
+<!--                 <h5 class="card-title text-center pb-0 fs-4">Consumption History</h5> -->
                 {{-- <p class="text-center small">Enter Anganwadi consumption details</p> --}}
               </div>
               <div class="row">
@@ -68,9 +95,19 @@
                     </div>
                 </form>
                 </div>
-                <div class="col-lg-11 my-4">
-                  <table class="table table-hover">
-                    <thead class="table-success">
+               <div class="col-lg-12 my-4 container-resp table-responsive dt-responsive">
+                  <table class="general-table" style="letter-spacing:1px;  font-family: 'Montserrat', sans-serif;
+    width:100%;
+    margin:20px auto;
+    
+    height:auto;">
+                    <thead class="table-heading" style=" background-color:#01987A;
+    letter-spacing:1px;
+    height: 40px;
+    text-align:center;
+    width:fixed;
+    color:white;">    
+                  
                       <tr>
                         <th></th>
                         <th scope="col">Sr No</th>
@@ -82,10 +119,14 @@
                     </thead>
                     <tbody>
                       @foreach ($consumptions as $i=>$consumption)
-                      <tr>
+                     <tr style=" height:auto;  
+    border:2px solid #01987a0c;
+    text-align:center;">
                         <th><i class="bi bi-cup-straw" style="color: tomato;"></i></th>
                         <th scope="row">{{$i+1}}</th>
-                        <td>{{$consumption->cname}}</td>
+                        <td style="  width:auto;
+    padding:10px 4px;
+    height:auto;">{{$consumption->cname}}</td>
                         <td>{{$consumption->itemName}}</td>
                         <td>{{$consumption->qnt}}</td>
                         <td>{{$consumption->created_at}}</td>
@@ -112,7 +153,11 @@
             <div class="col-lg-11 my-4">
               <ul class="list-group list-group-horizontal">
                 @foreach ($cds as $cd)
-                <li class="list-group-item "><a href="/{{$cd->file}}" target="_blank" rel="noopener noreferrer">{{basename($cd->file)}}</a></li>
+                <li class=" list-group-item document " style="border:1px solid rgba(127, 142, 253, 0.854);font-weight:bold;display:block;width:40%;margin:5px 10px;display:inline-block;">
+               
+                <i class="bi bi-file-earmark-text" style="color:rgba(127, 142, 253, 0.854);font-size: 20px;"></i>
+                <a href="/{{$cd->file}}" target="_blank" style="color:rgba(127, 142, 253, 0.854);" rel="noopener noreferrer">  
+                  {{basename($cd->file)}}</a></li>
                 @endforeach
               </ul>
 
