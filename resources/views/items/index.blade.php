@@ -5,6 +5,18 @@
 
 @section ("main")
 <style>
+        tfoot
+    {
+        text-align:center;
+        opacity:0.7;
+        background:#01987a0b;
+    }
+    .general-table tr:hover
+    {
+        background:#01987a34;
+        transition:0.3s;
+    }
+    
     .card
     {
         padding:30px;
@@ -42,8 +54,8 @@
     <a class="btn btn-primary ml-auto d-block mt-3 mr-3 btnadd" href="{{route('items.create')}}"> <i class='bi bi-plus-circle'></i> Add</a>
     <div class="card-block">
         <div class="table-responsive dt-responsive">
-            <table id="table" class="table table-hover  text-center">
-                <thead class="table-success">
+            <table id="table" class="general-table">
+                <thead class="table-heading">
                     <tr >
                         <th>Sr No</th>
                         <th>Category</th>
@@ -55,8 +67,8 @@
                     @foreach ($items as $index => $item)
                     <tr>
                         <td>{{$index+1}}</td>
-                        <td>{{$item->category->name}}</td> 
-                        <td>{{$item->name}}</td>
+                        <td style="text-align:left;margin:auto 2px;">{{$item->category->name}}</td> 
+                        <td style="text-align:left;margin:auto 2px;">{{$item->name}}</td>
                         <td>
                             <a href="{{route('items.edit',$item->id)}}" class='btn waves-effect waves-light btn-warning icon-btn btn-icon bs-tooltip rspbtn' title="Edit">
                                 <i class='bi bi-pencil-square'></i>
