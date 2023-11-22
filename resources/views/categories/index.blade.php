@@ -5,6 +5,7 @@
 
 @section ("main")
 <style>
+    
     .btnadd
     {
         width:50%;
@@ -23,13 +24,29 @@
     {
         margin:5px;
     } 
+    tfoot
+    {
+        text-align:center;
+        opacity:0.7;
+        background:#01987a0b;
+    }
+    .general-table tr:hover
+    {
+        letter-spacing:1px;
+        cursor: pointer;
+        transition:0.3s;
+    }
+    .general-table tr:nth-child(even) {
+        background-color: #01987a0c;
+    } 
+
     </style>
 <div class="card">
     <a class="btn btn-primary ml-auto d-block mt-3 mr-3 btnadd" href="{{route('categories.create')}}"><i class='bi bi-plus-circle'></i> Add</a>
     <div class="card-block">
         <div class="table-responsive dt-responsive">
-            <table id="table" class="table table-striped table-hover table-bordered text-center">
-                <thead>
+            <table id="table" class="general-table table-striped table-hover table-bordered text-center">
+                <thead  class="table-heading">
                     <tr>
                         <th>Sr No</th>
                         <th>Category Name</th>
@@ -40,7 +57,7 @@
                     @foreach ($categories as $index => $category)
                     <tr>
                         <td>{{$index+1}}</td>
-                        <td>{{$category->name}}</td>
+                        <td style="text-align:left;">{{$category->name}}</td>
                         <td>
                             <a href="{{route('categories.edit',$category->id)}}" class='btn rspbtn waves-effect waves-light btn-warning icon-btn btn-icon bs-tooltip' title="Edit">
                                 <i class='bi bi-pencil-square'></i>
