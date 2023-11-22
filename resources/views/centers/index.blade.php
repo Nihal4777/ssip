@@ -1,8 +1,11 @@
 @extends('layouts')
 @section('main')
 <style>
-  body
-  {}
+    .general-table tr:hover
+    {
+        background:#01987a34;
+        transition:0.3s;
+    }
   @media screen and (max-width: 600px) {
     .table-responsive
     {
@@ -147,7 +150,7 @@
 
 
 
-      <table class="table table-striped" id="myTable">
+      <table class="general-table" id="myTable">
         <!-- Modal -->
         <div class="modal fade" id="modalopen" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -173,12 +176,12 @@
             </div>
           </div>
         </div>
-        <thead class="table-success bgred">
+        <thead class="table-heading">
           <tr style="height: 50px;">
-            <th scope="col"><div class="form-check">
+            <th scope="col" style="padding:5px;"><div class="form-check">
               <input class="form-check-input checkall" type="checkbox" id="flexCheckDefault">
             </div></th>
-            <th scope="col">Sr.No.</th>
+            <th scope="col" >Sr.No.</th>
             <th scope="col">Code</th>
             <th scope="col">Anganwadi Name</th>
             <th scope="col">Area</th>
@@ -202,7 +205,7 @@
             <td>
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle greybutton" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Manage
+                  <i class="bi bi-hdd-stack-fill"></i>
                 </button>
                 <ul class="dropdown-menu">
                   <li><button class="dropdown-item" href="#" data-centercode="{{$d->id}}"  data-bs-toggle="modal"
