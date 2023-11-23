@@ -77,6 +77,12 @@ Route::group([ "middleware" => ["auth","role:admin"]], function () {
     });
 });
 
+Route::get('/speech',function(){
+    return view('index');
+});
+
+
+
 Route::group([ "middleware" => ["auth"]], function () {
     Route::get('/', function () {
         return view('admin.dashboard');
