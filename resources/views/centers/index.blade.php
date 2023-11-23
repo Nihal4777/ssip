@@ -3,7 +3,7 @@
 <style>
     .general-table tr:hover
     {
-        background:#01987a34;
+        background:#e4755c06    ;
         transition:0.3s;
     }
   @media screen and (max-width: 600px) {
