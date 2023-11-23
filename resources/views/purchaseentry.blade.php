@@ -1,6 +1,9 @@
 @extends('layouts')
-@push('styles')
+@section('main')
+
+<head>
 <style>
+   
   .card-body {
     padding: 16px;
   }
@@ -24,7 +27,7 @@
 
   .btn-group {
     float:right;
-    overflow: hidden;
+    /* justify-content: f; */
   }
 
   .btn-group button {
@@ -33,16 +36,17 @@
   .card 
   {
     margin-top:30px;
+
   }
   .customtable
   {
     width:90%;
-    margin:15px auto;
+    margin:5px auto;
     overflow: hidden;
   }
   .doc
   {
-    margin:15px 20px;
+    margin:25px 20px;
   }
   .add
   {
@@ -50,10 +54,13 @@
     float:right;
     margin:15px;
   }
-</style>
-@endpush
+  
 
-@section('main')
+
+</style>
+</head>
+
+
 <div class="pagetitle">
     <h1>Purchase</h1>
 </div><!-- End Page Title -->
@@ -64,16 +71,16 @@
       <!-- Left side columns -->
       <div class="col-lg-12">
         <div class="row">
-          <div class="card mb-3">
+          <div class="mb-3">
 
-            <div class="card-body">
+            <div class="card">
 
-              <div class="pt-4 pb-2">
+              <div class="card-body pt-4 pb-2" >
                 <h5 class="card-title text-center pb-0 fs-4">purchase Entry</h5>
                 <p class="text-center small">Enter Anganwadi purchase details</p>
-              </div>
+              
 {{-- 
-              <form class="row g-3 needs-validation" > --}}
+              <form class="row g-3 needs-validation"  > --}}
                 <div class="col-12">
                   <label for="yourName" class="form-label">Date</label>
                   <div class="col-sm-10 col-lg-11">
@@ -113,15 +120,27 @@
                             <input type="number" class="form-control" id="quantity" placeholder="Enter quantity">
                           </div>
                           <div class="btn-group justify-content-start" style="float:right;padding-top: 20px;width:130px;">
-                            <button type="submit" class="btn btn-primary" id="add-button" style="margin:10px">Add</button>
+                            <button type="submit" class="btn btn-primary" id="add-button" style="margin:10px"><i class="bi bi-bag-plus"></i>   Add</button>
                             {{-- <button type="button" class="btn btn-danger" id="remove-button">Remove</button> --}}
                           </div>
                         </div>
                       </form>
                     </div>
-                    <form method="post" id="secondForm" enctype="multipart/form-data">
-                      <table class="customtable table " style="width:90%;margin:20px auto;margin-top: 20px;">
-                        <thead class="table-success">
+                  </div>
+                </div>
+              </div>
+          </div>
+                  <form method="post" id="secondForm" enctype="multipart/form-data">
+                    <table class="general-table" style=" width:70%;background:white;
+    margin:20px auto;
+    text-align:center;
+    height:auto;">
+                      <thead class="table-heading" style=" background-color:#01987A;
+    letter-spacing:1px;
+    height: 40px;
+    
+    width:fixed;
+    color:white;">
                         <tr>
                           <th>Category</th>
                           <th>Item</th>
@@ -136,12 +155,10 @@
                         </tbody>
                       </table>
                     </form>
-                  </div>
-
-                </div><!-- End Customers Card -->
-
+                  
                 <div class="col-12 doc" style="margin:20px auto;">
-                  <label for="yourName" class="form-label">Supportive documents</label>
+                <i class="bi bi-file-earmark-post"></i> 
+                  <label for="yourName" class="form-label"> Supportive documents</label>
                   <div class="col-sm-10">
                     <input type="file" form="secondForm" multiple id="documents" name="documents[]" accept="application/pdf,.doc,.docx,.xls,.csv,.rtf,image/*,video/*" required>
                   </div>

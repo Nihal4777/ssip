@@ -1,15 +1,34 @@
 @extends('layouts')
 @section('main')
+<head>
+  <style>
+    
+  
+    tfoot
+    {
+        text-align:center;
+        opacity:0.7;
+        background:#01987a0b;
+    }
+    .general-table tr:hover
+    {
+        
+      background:#01987a34;
+        transition:0.3s;
+        cursor: pointer;
+    }
 
+  </style>
+</head>
 <div class="pagetitle">
     <h1>Stock Details</h1>
   </div><!-- End Page Title -->
 
 <div class="card-body table-responsive">
-    <h5 class="card-title"> <i class="bi bi-cart-check-fill"></i> Current Stock </h5>
+    <h5 class="card-title">  <i class="bi bi-inboxes-fill"></i> Current Stock </h5>
     <!-- Table with hoverable rows -->
-    <table class="table table-hover">
-      <thead class="table-success">
+    <table class="general-table">
+      <thead class="table-heading">
         <tr>
           <th></th>
           <th scope="col">Sr No</th>

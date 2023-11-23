@@ -1,18 +1,28 @@
 @extends('layouts')
 @section('main')
+<head>
 <style>
-    body
+     .general-table td
     {
-        background-color:black;
+    width:auto;
+    padding:10px 4px;
+    height:auto;
+    
     }
-            </style>
-    <div class="card-body">
-    <h5 class="card-title"> <i class="bi bi-cart-check-fill"></i> Past Deliveries</h5>
+    tfoot
+    {
+        text-align:center;
+        opacity:0.7;
+        background:#01987a0b;
+    }
+            </style></head>
+  <div class="container-resp table-responsive dt-responsive">
+    <h5 class="card-title">  <i class="bi bi-pin-map-fill"></i> Past Deliveries</h5>
     <!-- Table with hoverable rows -->
     <form action="deliveries" method="post">
         {{ csrf_field() }}
-    <table class="table table-hover">
-    <thead class="table-success">
+    <table class="general-table">
+    <thead class="table-heading">
         <tr>
         <th><i class="bi bi-three-dots-vertical"></i></th>
         <th scope="col">Delivery Id.</th>

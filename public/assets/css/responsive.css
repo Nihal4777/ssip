@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+/* montserrat font */
+/* 
+    bg = #ED05CB
+    lighr = #c28f74
+    dark = #E4745c
+
+*/
+.general-table
+{
+
+font-family: 'Montserrat', sans-serif;
+width:100%;
+margin:20px auto;
+height:auto;
+}
+.table-heading
+{
+background-color:#E4745c;
+letter-spacing:1px;
+height: 40px;
+text-align:center;
+width:fixed;
+color:white;
+}
+.general-table tr
+{
+height:auto;  
+border:2px solid #01987a0c;
+text-align:center;
+}
+.general-table td
+{
+width:auto;
+padding:10px 4px;
+height:auto;
+
+}
+@media screen and (max-width: 400px) {
+    .card
+    {
+        background-color: rgba(226, 232, 249, 0);
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    }
+    .row .general-table
+    {
+        width: 100%;
+    }
+}

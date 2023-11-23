@@ -1,11 +1,36 @@
 @extends('layouts')
 @section('main')
+ <head>
+    <style>
+       
+  
+    .greybutton
+    {
+    background:none;
+    border:none;
+    color:blue;
+    opacity: 0.7;
+    }
+    .custom
+    {
+    background-color:#01987A;
+    }
+   
+    tfoot
+    {
+        text-align:center;
+        opacity:0.7;
+        background:#01987a0b;
+    }
 
+   
+    </style>
+  </head>
     <div class="card-body">
     {{-- <h5 class="card-title"> <i class="bi bi-cart-check-fill"></i> History </h5>
     <!-- Table with hoverable rows -->
-    <table class="table table-hover">
-    <thead class="table-success">
+    <table class="general-table table-hover">
+    <thead class="table-heading">
         <tr>
             <th></th>
             <th scope="col">Center Code</th>
@@ -35,15 +60,15 @@
 
 
 
-    <div class="card-body">
-    <h5 class="card-title"> <i class="bi bi-cart-check-fill"></i> Pending Stock</h5>
+    <div class="container-resp table-responsive dt-responsive">
+    <h5 class="card-title"> <i class="bi bi-journal-album"></i>  Pending Stock</h5>
     <!-- Table with hoverable rows -->
     <form action="deliveries" method="post">
         {{ csrf_field() }}
-    <table class="table table-hover">
-    <thead class="table-success">
+    <table class="general-table">
+    <thead class="table-heading">
       <tr>
-        <th><i class="bi bi-three-dots-vertical"></i></th>
+        <th></th>
         <th scope="col">Grant Id.</th>
         <th scope="col">Category</th>
         <th scope="col">Item</th>
@@ -66,7 +91,7 @@
           <td>
             <div class="dropdown">
               <button class="btn btn-small btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-three-dots-vertical"></i>
+                <i class="bi bi-grid-fill" style="font-size:16px;margin:0;" ></i>
               </button>
               <ul class="dropdown-menu">
                 <li><button class="dropdown-item" name="complete" value="{{$stocks->id}}"
