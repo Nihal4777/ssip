@@ -44,13 +44,13 @@
     </div>
 
     <!-- Stocks ================ -->
-    <div class="card-body">
+    <div class="container-resp table-responsive dt-responsive">
       <h5 class="card-title"><i class="ri-archive-fill"></i> Current Stock</h5>
 
       <!-- Table with hoverable rows -->
       
-      <table class="table table-hover">
-        <thead class="table-success">
+      <table class="general-table">
+        <thead class="table-heading">
           <tr>
             <th></th>
             <th scope="col">No</th>
@@ -93,11 +93,11 @@
       </ul>
     </nav>
     <!-- End Table with hoverable rows -->
-    <div class="card-body">
+    <div class="container-resp table-responsive dt-responsive">
       <h5 class="card-title"> <i class="bi bi-cart-check-fill"></i> Invoices</h5>
       <!-- Table with hoverable rows -->
-      <table class="table table-hover">
-        <thead class="table-success">
+      <table class="general-table">
+        <thead class="table-heading">
           <tr>
             <th></th>
             <th scope="col">No</th>
@@ -133,12 +133,12 @@
     </div>
 
     <!--Invoice---------  -->
-    <div class="card-body">
+     <div class="container-resp table-responsive dt-responsive">
       <h5 class="card-title"> <i class="bi bi-calculator"></i>Assigned Stocks</h5>
-      <div class="table-responsive">
+     
       <!-- Table with hoverable rows -->
-        <table class="table table-hover">
-          <thead class="table-success">
+        <table class="general-table">
+          <thead class="table-heading">
             <tr>
               <th><i class="bi bi-three-dots-vertical"></i></th>
               <th scope="col">Grant Id.</th>
