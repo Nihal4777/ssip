@@ -36,7 +36,7 @@ class ApiController extends Controller
         if(!empty($request->item))
             foreach($request->item as $i=>$item)
             {
-                $cons=new Consumption(['item_id'=>$item,'qnt'=>$request->qnt[$i],'center_id'=>$user->center_id,'date'=>now()]);
+                $cons=new Consumption(['item_id'=>$item,'qnt'=>$request->qnt[$i],'center_id'=>$request->center_id,'date'=>now()]);
                 // $cons->save();
                 $stock=Stock::where(['item_id'=>$item,'center_id'=>$request->center_id,])->first();
                 $stock->qnt-=$request->qnt[$i];
