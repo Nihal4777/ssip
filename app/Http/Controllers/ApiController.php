@@ -32,7 +32,6 @@ class ApiController extends Controller
     }
     public function consumption_store(Request $request)
     {
-
         $user=auth()->user();
         if(!empty($request->item))
             foreach($request->item as $i=>$item)
