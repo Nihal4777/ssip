@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
 /* montserrat font */
 /* 
-    bg = #ED05CB
+    bg = #EDD5CB
     lighr = #c28f74
     dark = #E4745c
 
@@ -16,7 +16,7 @@ height:auto;
 }
 .table-heading
 {
-background-color:#E4745c;
+background-color:#e4755cbe;
 letter-spacing:1px;
 height: 40px;
 text-align:center;
@@ -26,7 +26,7 @@ color:white;
 .general-table tr
 {
 height:auto;  
-border:2px solid #01987a0c;
+border:2px solid #c28f7491;
 text-align:center;
 }
 .general-table td
@@ -45,5 +45,6 @@ height:auto;
     .row .general-table
     {
         width: 100%;
+       
     }
 }
