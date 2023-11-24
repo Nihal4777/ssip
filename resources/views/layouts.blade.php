@@ -250,8 +250,8 @@
 
          
           <li class="Invoices">
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Invoices</span>
+            <a href="/reports">
+              <i class="bi bi-circle"></i><span>Reports</span>
             </a>
           </li>
         </ul>
@@ -297,6 +297,12 @@
         <a class="nav-link collapsed" href="/consumption/history">
           <i class="bi bi-clock-history"></i>
           <span>Consumption history</span>
+        </a>
+      </li>
+      <li class="nav-item consumptionh">
+        <a class="nav-link collapsed" href="/purchase/history">
+          <i class="bi bi-clock-history"></i>
+          <span>Purchase history</span>
         </a>
       </li>
       <li class="nav-item Purchases">
