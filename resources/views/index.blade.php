@@ -15,14 +15,15 @@
     <p>Check out the <a href="https://github.com/addpipe/simple-recorderjs-demo" target="_blank">code on GitHub</a> and <a href="https://addpipe.com/blog/using-recorder-js-to-capture-wav-audio-in-your-html5-web-site/" target="_blank">our blog post on using Recorder.js to capture WAV audio</a>.</p>
     <div id="controls">
   	 <button id="recordButton">Record</button>
-  	 <button id="pauseButton" disabled>Pause</button>
-  	 <button id="stopButton" disabled>Stop</button>
+  	 {{-- <button id="pauseButton" disabled>Pause</button> --}}
+  	 {{-- <button id="stopButton" disabled>Stop</button> --}}
     </div>
     <div id="formats">Format: start recording to see sample rate</div>
   	<p><strong>Recordings:</strong></p>
   	<ol id="recordingsList"></ol>
     <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   	<script src="/assets/recorder.js"></script>
-  	<script src="/assets/app.js"></script>
+  	<script src="/assets/back.js"></script>
   </body>
 </html>

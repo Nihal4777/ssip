@@ -9,20 +9,22 @@ var input; 							//MediaStreamAudioSourceNode we'll be recording
 var AudioContext = window.AudioContext || window.webkitAudioContext;
 var audioContext //audio context to help us record
 
-var recordButton = $('.recordButton')[0];
+var recordButton = document.getElementById("recordButton");
+// var stopButton = document.getElementById("stopButton");
 // var pauseButton = document.getElementById("pauseButton");
-//add events to those 2 buttons
-recordButton.addEventListener("click", function(){
-	if($('.recordButton').hasClass('running')) stopRecording();
-	else startRecording();
 
-});
+//add events to those 2 buttons
+// recordButton.addEventListener("click", startRecording);
 // stopButton.addEventListener("click", stopRecording);
 // pauseButton.addEventListener("click", pauseRecording);
-
+$('#recordButton').click(function(){
+	if($(this).hasClass('running')) stopRecording();
+	else startRecording();
+	$(this).toggleClass('running');
+});
 function startRecording() {
 	console.log("recordButton clicked");
-	$('.recordButton').toggleClass('running');
+
 	/*
 		Simple constraints object, for more advanced audio features see
 		https://addpipe.com/blog/audio-constraints-getusermedia/
@@ -67,7 +69,7 @@ function startRecording() {
 			Create the Recorder object and configure to record mono sound (1 channel)
 			Recording 2 channels  will double the file size
 		*/
-		rec = new Recorder(input,{numChannels:2})
+		rec = new Recorder(input,{numChannels:1})
 
 		//start the recording process
 		rec.record()
@@ -82,25 +84,11 @@ function startRecording() {
 	});
 }
 
-function pauseRecording(){
-	console.log("pauseButton clicked rec.recording=",rec.recording );
-	if (rec.recording){
-		//pause
-		rec.stop();
-		// pauseButton.innerHTML="Resume";
-	}else{
-		//resume
-		rec.record()
-		// pauseButton.innerHTML="Pause";
-
-	}
-}
 
 function stopRecording() {
-	$('.recordButton').toggleClass('running');
 	console.log("stopButton clicked");
 
-	//disable the stop button, enable the record too allow for new recordings
+	// //disable the stop button, enable the record too allow for new recordings
 	// stopButton.disabled = true;
 	// recordButton.disabled = false;
 	// pauseButton.disabled = true;
@@ -116,8 +104,6 @@ function stopRecording() {
 
 	//create the wav blob and pass it on to createDownloadLink
 	rec.exportWAV(createDownloadLink);
-
-
 }
 
 function createDownloadLink(blob) {
@@ -126,7 +112,7 @@ function createDownloadLink(blob) {
 	var au = document.createElement('audio');
 	var li = document.createElement('li');
 	var link = document.createElement('a');
-
+	const itemList = document.getElementById('item-list');
 	//name of .wav file to use during upload and download (without extendion)
 	var filename = new Date().toISOString();
 
@@ -138,6 +124,7 @@ function createDownloadLink(blob) {
 	link.href = url;
 	link.download = filename+".wav"; //download forces the browser to donwload the file using the  filename
 	link.innerHTML = "Save to disk";
+
 	//add the new audio element to li
 	li.appendChild(au);
 	
@@ -147,51 +134,39 @@ function createDownloadLink(blob) {
 	//add the save to disk link to li
 	li.appendChild(link);
 	
-	var xhr=new XMLHttpRequest();
-	xhr.onload=function(e) {
-		if(this.readyState === 4) {
-			console.log("Server returned: ",e.target.responseText);
-		}
-	};
-	var fd=new FormData();
-	fd.append("file",blob, filename);
-	xhr.open("POST","http://127.0.0.1:5000/upload",true);
-	xhr.send(fd);
-	xhr.onload = () => {
-	  console.log("DONE", xhr.readyState); // readyState will be 4
-	  if (xhr.status === 200) {
-		  console.log(xhr.response);
-		  console.log(xhr.responseText);
-		}
-	};
-
 	//upload link
 	var upload = document.createElement('a');
 	upload.href="#";
 	upload.innerHTML = "Upload";
-	upload.addEventListener("click", function(event){
-		  var xhr=new XMLHttpRequest();
-		  xhr.onload=function(e) {
-		      if(this.readyState === 4) {
-		          console.log("Server returned: ",e.target.responseText);
-		      }
-		  };
-		  var fd=new FormData();
-		  fd.append("file",blob, filename);
-		  xhr.open("POST","http://127.0.0.1:5000/upload",true);
-		  xhr.send(fd);
-		  xhr.onload = () => {
-			console.log("DONE", xhr.readyState); // readyState will be 4
-			if (xhr.status === 200) {
-				console.log(xhr.response);
-				console.log(xhr.responseText);
-			  }
-		  };
-	})
+
+	var xhr=new XMLHttpRequest();
+	xhr.onload=function(e) {
+		if(this.readyState === 4) {
+			console.log("Server returned: ",e.target.responseText);
+			data = JSON.parse(e.target.responseText);
+			data.list.forEach(function(val,i)
+			{
+				const tr = document.createElement('tr');
+				tr.innerHTML = `
+				<input type="hidden" name="item[]" value="">
+				<input type="hidden" name="qnt[]" value="${data.qnts[i]}">
+				<td>'Food'</td>
+				<td>${val}</td>
+				<td>${data.qnts[i]}</td>
+				<td><button class="btn btn-sm itemdelete" type="button"><i class="bi bi-x-lg text-danger"></i></button></td>
+				`;
+				itemList.appendChild(tr);
+			});
+
+		}
+	};
+	var fd=new FormData();
+	fd.append("file",blob, filename);
+	xhr.open("POST","http://127.0.0.1:5000",true);
+	xhr.send(fd);
 	li.appendChild(document.createTextNode (" "))//add a space in between
 	li.appendChild(upload)//add the upload link to li
-	recordingsList
+
 	//add the li element to the ol
-	recordingsList.innerHTML="";
 	recordingsList.appendChild(li);
 }

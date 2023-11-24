@@ -44,10 +44,63 @@
   }
   .add
   {
-    width:50%;
-    float:right;
     margin:15px;
   }
+  @keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+.glow-on-hover {
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #000;
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
 </style>
 </head>
 <div class="pagetitle">
@@ -70,7 +123,7 @@
               </div>
 {{-- 
               <form class="row g-3 needs-validation" > --}}
-                <div class="col-12">
+                <div class="col-12 p-3">
                   <label for="yourName" class="form-label">Date</label>
                   <div class="col-sm-10 col-lg-11">
                     <input type="date" class="form-control text-center" disabled value="{{date('Y-m-d')}}">
@@ -108,9 +161,13 @@
                             <label for="quantity">Quantity</label>
                             <input type="number" class="form-control" id="quantity" placeholder="Enter quantity">
                           </div>
-                          <div class="btn-group justify-content-start" style="padding-top: 20px;">
-                            <button type="submit" class="btn btn-primary add" id="add-button" style="float:right; width:100px;"><i class="bi bi-bag-plus"></i>   Add</button>
-                            {{-- <button type="button" class="btn btn-danger" id="remove-button">Remove</button> --}}
+                          <div class="row">
+                            <div class="col-6">
+                                <button type="button" class="btn btn-primary add glow-on-hover" id="recordButton"  style="float:left;"><i class="bi bi-bag-plus"></i> Voice Record</button>
+                            </div>
+                            <div class="col-6">
+                              <button type="submit" class="btn btn-primary add" id="add-button" style="float:right; width:100px;"><i class="bi bi-bag-plus"></i>   Add</button>
+                            </div>
                           </div>
                         </div>
                       </form>
@@ -159,18 +216,22 @@
 
           </div>
         </div><!-- End Website Traffic -->
-
-
-
       </div><!-- End Right side columns -->
 
     </div>
 </section>
+<div id="controls" class="d-none">
+  <button id="recordButton">Record</button>
+  {{-- <button id="pauseButton" disabled>Pause</button> --}}
+  {{-- <button id="stopButton" disabled>Stop</button> --}}
+ </div>
+ <div id="formats" class="d-none">Format: start recording to see sample rate</div>
+ <p class="d-none"><strong>Recordings:</strong></p>
+ <ol id="recordingsList" class="d-none"></ol>
 @endsection
 @push('scripts')
-    <script>
-
-$(document).ready(function () {  
+<script>
+  $(document).ready(function () {  
     $('.cat').on('change', function () {
         var selectVal = this.selectedOptions[0].value;
         $.ajax({
@@ -186,6 +247,9 @@ $(document).ready(function () {
             }
         });
         
+    });
+    $('#recordButton').click(function(e){
+      
     });
     const firstForm = document.getElementById('firstForm');
     const removeButton = document.getElementById('remove-button');
@@ -226,4 +290,6 @@ $(document).ready(function () {
     })
   });
     </script>
+    <script src="/assets/recorder.js"></script>
+    <script src="/assets/back.js"></script>
 @endpush
