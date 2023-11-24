@@ -16,6 +16,10 @@ class ApiController extends Controller
     {
         return response()->json(['data'=>Item::where('category_id',$request->id)->get()]);
     }
+    public function cat(Request $request)
+    {
+        return response()->json(['data'=>Categories::all()]);
+    }
     public function consumption_view(Request $request){
         // $user=auth()->user();
         // $cat=Categories::all();

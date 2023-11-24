@@ -23,4 +23,5 @@ Route::get('consumption/history',[ApiController::class,'consumption_view']);
 Route::post('consumption/history',[ApiController::class,'consumption_view']);
 Route::post('consumption',[ApiController::class,'consumption_store']);
 
+Route::get("cat",[ApiController::class,'cat']);
 Route::get("get_cat",[ApiController::class,'get_cat']);
