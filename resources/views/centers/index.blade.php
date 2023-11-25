@@ -1,10 +1,17 @@
 @extends('layouts')
 @section('main')
-<style>
-    .general-table tr:hover
+<style> .general-table tr:hover
     {
         background:#e4755c06    ;
         transition:0.3s;
+    }
+    .dataTables_length
+{
+  display: none;
+}
+    .myTable_length
+    {
+      display: none;
     }
   @media screen and (max-width: 600px) {
     .table-responsive
@@ -14,7 +21,7 @@
   }
   </style>
 
-    {{-- <div class="">
+     <div class="">
         <div class="card-body">
           <h5 class="card-title"><i class="ri-filter-off-line"></i>  Search Anganwadi</h5>
     
@@ -44,7 +51,7 @@
               </div>
           </form>
         </div>
-</div> --}}
+</div>
    
     <div class="addbutton card-body" style="margin: 20px auto;">
          <!-- Button trigger modal -->    
