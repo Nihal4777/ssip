@@ -399,6 +399,47 @@
 
 
 
+  @role("supplier")
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/">
+          <i class="bi bi-house"></i>
+          <span>Pending Deliveries</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/supplier/pending">
+          <i class="bi bi-house"></i>
+          <span>Fulfilled Deliveries</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/supplier/fulfilled">
+          <i class="bi bi-house"></i>
+          <span>Fulfilled Deliveries</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/logout">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>logout</span>
+        </a>
+      </li><!-- End Error 404 Page Nav -->
+
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  @endrole
 
   <main id="main" class="main">
     @if ($errors->any())
