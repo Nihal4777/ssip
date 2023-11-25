@@ -278,7 +278,7 @@
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/dashboard">
+        <a class="nav-link collapsed" href="/">
           <i class="bi bi-house"></i>
           <span>Home</span>
         </a>
