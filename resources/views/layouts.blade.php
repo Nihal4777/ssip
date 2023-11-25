@@ -215,7 +215,7 @@
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/dashboard">
+        <a class="nav-link collapsed" href="/">
           <i class="bi bi-house"></i>
           <span>Home</span>
         </a>
@@ -231,12 +231,11 @@
               <i class="bi bi-circle"></i><span>Aanganwadis</span>
             </a>
           </li>
-        
-          <li class="Suppliers">
+          {{-- <li class="Suppliers">
             <a href="/items">
               <i class="bi bi-circle"></i><span>Suppliers</span>
             </a>
-          </li>
+          </li> --}}
           <li class="Categories">
             <a href="/categories">
               <i class="bi bi-circle"></i><span>Categories</span>
@@ -248,19 +247,19 @@
             </a>
           </li>
 
-         
+{{--          
           <li class="Invoices">
             <a href="/reports">
               <i class="bi bi-circle"></i><span>Reports</span>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </li>
 
       <li class="nav-item Consumption">
-        <a class="nav-link collapsed" href="pages-register.html">
+        <a class="nav-link collapsed" href="/reports">
           <i class="bi bi-card-list"></i>
-          <span>Consumption</span>
+          <span>Reports</span>
         </a>
       </li><!-- End Register Page Nav -->
 
@@ -330,7 +329,12 @@
           <span>Past Deliveries</span>
         </a>
       </li><!-- End Profile Page Nav -->
-
+      {{-- <li class="nav-item Consumption">
+        <a class="nav-link collapsed" href="/consumption/reports">
+          <i class="bi bi-card-list"></i>
+          <span>Consumption Report</span>
+        </a>
+      </li><!-- End Register Page Nav --> --}}
       <li class="nav-item">
         <a class="nav-link collapsed" href="/logout">
           <i class="bi bi-box-arrow-in-right"></i>

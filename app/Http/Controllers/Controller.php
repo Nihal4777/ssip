@@ -21,6 +21,14 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
+
+    public function cons_report(Request $request)
+    {
+        return view('reports');
+    }
+
+
+
     public function dashboard(Request $request)
     { 
         return view('dashboard');

@@ -43,6 +43,7 @@ Route::group(['middleware'=>["auth","role:supplier"]],function() {
 Route::group(['middleware'=>["auth","role:teacher"]],function() {
     Route::get("current",[StocksController::class,'current']);
     Route::get("assigned",[Controller::class,'assigned']);
+    Route::get("consumption/reports",[Controller::class,'cons_report']);
 
 
     Route::get('consumption',[Controller::class,'consumption_index']);

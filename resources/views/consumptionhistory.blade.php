@@ -80,12 +80,16 @@
               </div>
               <div class="row">
                 <div class="col-12">
-                  <label for="yourName" class="form-label">Date</label>
+                  <label for="yourName" class="form-label">Date Range</label>
                   <form action="" method="post">
                     {{ csrf_field() }}
                     <div class="row">
                       <div class="col-10 col-lg-11">
-                        <input type="date" name="date" class="form-control text-center" value="{{$date}}">
+                        {{-- <input type="date" name="date" class="form-control text-center" value="{{$date}}"> --}}
+
+                        <input type="hidden" name="start" id="startdate" />
+                        <input type="hidden" name="end"  id="enddate" />
+                        <input type="text" name="daterange" value="11/24/2023 - 11/25/2023" />
                       </div>
                       <div class="col-2 col-lg-1">
                         <button class="btn btn-primary">
@@ -232,4 +236,21 @@ $(document).ready(function () {
     })
   });
     </script>
+    
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script>
+      $(function() {
+        $('input[name="daterange"]').daterangepicker({
+          opens: 'left'
+        }, function(start, end, label) {
+          console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+
+          $(startdate).val(start.format('YYYY-MM-DD'));
+          $(enddate).val(end.format('YYYY-MM-DD'));
+        });
+      });
+      </script>
 @endpush
