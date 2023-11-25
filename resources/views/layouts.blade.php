@@ -406,14 +406,6 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
 
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/">
-          <i class="bi bi-house"></i>
-          <span>Pending Deliveries</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
       <li class="nav-item">
         <a class="nav-link collapsed" href="/supplier/pending">
           <i class="bi bi-house"></i>
