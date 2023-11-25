@@ -21,44 +21,13 @@
   }
   </style>
 
-<!--      <div class="">
-        <div class="card-body">
-          <h5 class="card-title"><i class="ri-filter-off-line"></i>  Search Anganwadi</h5>
-    
-           Browser Default Validation -->
-          {{-- <form class="row g-3">
-            <div class="col-md-4">
-              <label for="validationDefault01" class="form-label">name or center </label>
-              <input type="text" class="form-control" id="validationDefault01"  required>
-            </div>
-            <div class="col-md-2">
-              <label for="validationDefault02" class="form-label">area</label>
-              <input type="text" class="form-control" id="validationDefault02" required>
-            </div>
-            <div class="col-md-3">
-                <label for="validationDefault04" class="form-label">city</label>
-              <select class="form-select" id="validationDefault04" required>
-                <option selected disabled value="">City 1</option>
-                <option>City 2</option>
-                <option>City 2</option>
-                <option>City 2</option>
-                <option>City 2</option>
-              </select>                 
-            </div>
-            <div class="col-md-2">
-                <label for="validationDefault05" class="form-label">id</label>
-                <input type="text" class="form-control" id="validationDefault05" required>
-              </div>
-          </form>
-        </div>
-</div> --}}
     <div class="addbutton card-body" style="margin: 20px auto;">
          <!-- Button trigger modal -->    
          
-        <button type="submit" class="btn btn-primary redbutton"> <i class="bx bxs-plus-circle"></i>  Add Anganwadi</button>
+        <button type="submit" class="btn btn-primary redbutton" data-bs-toggle="modal" data-bs-target="#addAanganwadi"> <i class="bx bxs-plus-circle"></i>  Add Anganwadi</button>
         <!-- Modal -->
-        <div class="modal fade" id="verticalycentered" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="addAanganwadi" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered" data-bs-target="#grandModal" data-bs-toggle="modal">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title">Add AnganWadi</h5>
@@ -246,7 +215,7 @@
       </nav> --}}
 
 
-      <div class="modal fade" id="grandModal" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true">
+      <div class="modal fade" id="grandModal" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true" >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
