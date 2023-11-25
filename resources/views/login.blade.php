@@ -13,7 +13,13 @@
 {{-- <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --}}
 </head>
 <style>
-body {
+    .otpbtn
+    {
+        background:none;
+        border:none;
+        color:rgb(100,0,3,0.9);
+    }
+    body {
     margin: 0;
     padding: 0;
     display: flex;
@@ -219,7 +225,7 @@ input:focus
             <div class="input-group">
                 <label for="username">Username:</label>
                 <input type="text" id="email" name="email" required>
-                <button type="button" class="btn btn-link ms-auto" id="fg">Get OTP</button>
+                <button type="button" class="btn btn-link ms-auto otpbtn" id="fg">Get OTP</button>
             </div>
             <div class="input-group">
                 <label for="password">Password:</label>
