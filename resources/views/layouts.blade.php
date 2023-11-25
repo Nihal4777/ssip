@@ -59,7 +59,7 @@
       {
         display: none;
       }
-        .redbutton
+        .translate
         {
           z-index: 1;
           right:0;
@@ -247,7 +247,7 @@
   </header><!-- End Header -->
  
   <!-- Translate Button -->
-  <button type="submit" class="btn btn-primary redbutton"data-bs-toggle="modal" data-bs-target="#verticalycentered"> <i class="bi bi-translate"></i></button>
+  <button type="submit" class="btn btn-primary translate"data-bs-toggle="modal" data-bs-target="#verticalycentered"> <i class="bi bi-translate"></i></button>
         <!-- Modal -->
         <div class="modal fade" id="verticalycentered" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
