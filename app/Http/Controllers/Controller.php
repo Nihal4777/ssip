@@ -8,6 +8,7 @@ use App\Models\ConsumptionDocument;
 use App\Models\Purchase;
 use App\Models\PurchaseDocument;
 use App\Models\Stock;
+use Barryvdh\DomPDF\Facade\Pdf;
 use DateInterval;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -68,7 +69,13 @@ class Controller extends BaseController
             $date=date('m/d/Y',strtotime($request->start));
             $enddate=date('m/d/Y',strtotime($request->end));
         }
-        return view('consumptionhistory',compact('cat','consumptions','date','cds','enddate'));
+        if(!empty($request->gen_report))
+        {
+            $pdf = Pdf::loadView('reports.cons', compact('cat','consumptions','date','cds','enddate'));
+            return $pdf->stream('reports.pdf');
+        }
+        else
+            return view('consumptionhistory',compact('cat','consumptions','date','cds','enddate'));
     }
     public function consumption_store(Request $request)
     {

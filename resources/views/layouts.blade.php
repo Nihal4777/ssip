@@ -310,20 +310,10 @@
           </li>
 
          
-          <li class="Invoices">
-            <a href="/reports">
-              <i class="bi bi-circle"></i><span>Reports</span>
-            </a>
-          </li>
+        
         </ul>
       </li>
 
-      <li class="nav-item Consumption">
-        <a class="nav-link collapsed" href="pages-register.html">
-          <i class="bi bi-card-list"></i>
-          <span>Consumption</span>
-        </a>
-      </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="/logout">

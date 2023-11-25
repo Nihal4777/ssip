@@ -1,0 +1,34 @@
+{
+    "nunito": {
+        "300_italic": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/nunito_300_italic_5564b019de9ee757b8e74969231a39c6",
+        "italic": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/nunito_italic_7a5e338072de710d78e80a0b7b676e13",
+        "600_italic": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/nunito_600_italic_70540b8497fcdcad67439a1da170a6cd",
+        "bold_italic": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/nunito_bold_italic_f7385ade290a5e83b60b5666bb14efdd",
+        "300": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/nunito_300_ee9ff98a878d2bcec5ac60166e67ac59",
+        "normal": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/nunito_normal_51264aea5373c13e99081e0e39bbfb0d",
+        "600": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/nunito_600_260a41cb865a0435c462e0b12cc10190",
+        "bold": "nunito_bold_a3fe31648353394ca5aaeaff65373ead"
+    },
+    "open sans": {
+        "300_italic": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/open_sans_300_italic_bbf022708fbc12b32e436c3fc9556a14",
+        "italic": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/open_sans_italic_ce12633a2ffe234946eafc57381caa3a",
+        "600_italic": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/open_sans_600_italic_d5465e8d9fbc8917307f8ac7dca96398",
+        "bold_italic": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/open_sans_bold_italic_c02c7106f1b3bee9ca386a6f0b03ab93",
+        "300": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/open_sans_300_38aaef3a6f81e0869aefd29fb43eb15a",
+        "normal": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/open_sans_normal_d26ccb22614ae36546477dab90017d0e",
+        "600": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/open_sans_600_624d6e61f7711aa5830c80aa3bba1264",
+        "bold": "open_sans_bold_4238b33012be0cc2f17eea1b2179dc6e"
+    },
+    "poppins": {
+        "300_italic": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/poppins_300_italic_56b93a487d8c28777146ffd1eef895fd",
+        "italic": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/poppins_italic_46da975c18aa560b0bd3b88b138916e9",
+        "500_italic": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/poppins_500_italic_c293cb67db049e112d06248502d9b24c",
+        "600_italic": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/poppins_600_italic_5bc21aa56d8039e2f3d1b8f790f9558d",
+        "bold_italic": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/poppins_bold_italic_1918f692c841b01acf827608eecc4cdd",
+        "300": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/poppins_300_999a4088f0da952988730996a4bec1d8",
+        "normal": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/poppins_normal_ee697d7869cb745ccf3ccccc013145ad",
+        "500": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/poppins_500_fce53b208cddccda1573b7620b579598",
+        "600": "C:\\Users\\Nihal\\Documents\\SSIP\\Prototype\\storage\\fonts\/poppins_600_9623fbc18c38938c2057a9aae8390a42",
+        "bold": "poppins_bold_8fe618268f56b4b8f1e70e87a9e99fc0"
+    }
+}

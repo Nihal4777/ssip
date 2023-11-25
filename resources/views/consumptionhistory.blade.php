@@ -96,6 +96,11 @@
                           <i class="bi bi-search"></i>
                         </button>
                       </div>
+                      <div class="m-2">
+                        <button class="btn btn-primary" name="gen_report" value="true" type="submit">
+                          Generate Report
+                        </button>
+                      </div>
                     </div>
                 </form>
                 </div>
