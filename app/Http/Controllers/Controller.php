@@ -50,12 +50,25 @@ class Controller extends BaseController
     public function consumption_view(Request $request){
         $user=auth()->user();
         $cat=Categories::all();
-        $date=$request->date;
+        $date=$request->start;   
+        $enddate=$request->end;
         if(empty($date))
+        {
             $date=date('Y-m-d',strtotime('yesterday'));
-        $consumptions=DB::table('consumptions as g')->where(['center_id'=>auth()->user()->center_id,'date'=>$date])->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->get(['g.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','qnt']);
-        $cds=ConsumptionDocument::where(['center_id'=>auth()->user()->center_id,'date'=>$date])->get();
-        return view('consumptionhistory',compact('cat','consumptions','date','cds'));
+            $enddate=date('Y-m-d',strtotime('today'));
+        }
+        $consumptions=DB::table('consumptions as g')->where(['center_id'=>auth()->user()->center_id])->whereBetween('date',[$date,$enddate])->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->get(['g.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','qnt']);
+        $cds=ConsumptionDocument::where(['center_id'=>auth()->user()->center_id])->whereBetween('date',[$date,$enddate])->get();
+        if(empty($request->start))
+        {
+            $date=date('m/d/Y',strtotime('yesterday'));
+            $enddate=date('m/d/Y',strtotime('today'));
+        }
+        else{
+            $date=date('m/d/Y',strtotime($request->start));
+            $enddate=date('m/d/Y',strtotime($request->end));
+        }
+        return view('consumptionhistory',compact('cat','consumptions','date','cds','enddate'));
     }
     public function consumption_store(Request $request)
     {

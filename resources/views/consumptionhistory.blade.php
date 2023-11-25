@@ -89,7 +89,7 @@
 
                         <input type="hidden" name="start" id="startdate" />
                         <input type="hidden" name="end"  id="enddate" />
-                        <input type="text" name="daterange" value="11/24/2023 - 11/25/2023" />
+                        <input type="text" name="daterange" value="{{$date}} - {{$enddate}}" />
                       </div>
                       <div class="col-2 col-lg-1">
                         <button class="btn btn-primary">
