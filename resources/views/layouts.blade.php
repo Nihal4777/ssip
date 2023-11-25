@@ -33,7 +33,7 @@
   <link href="/assets/css/responsive.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/fonts/icofont.css">
      <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
-cb=googleTranslateElementInit">
+cb=googleTranslateElementInit"></script>
   <style>
         #google_translate_element {
             margin: auto;
