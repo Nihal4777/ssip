@@ -1,6 +1,19 @@
 @extends('layouts')
 @section('main')
 <style>
+      .general-table tr:hover
+    {
+        background:#e4755c06    ;
+        transition:0.3s;
+    }
+    .dataTables_length
+{
+  display: none;
+}
+    .myTable_length
+    {
+      display: none;
+    }
     .general-table tr:hover
     {
         background:#e4755c06    ;
