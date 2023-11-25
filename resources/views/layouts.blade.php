@@ -34,6 +34,8 @@
   <link href="/assets/css/style.css" rel="stylesheet">
   <link href="/assets/css/responsive.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/fonts/icofont.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
   <style>
      #google_translate_element {
             margin: auto;
