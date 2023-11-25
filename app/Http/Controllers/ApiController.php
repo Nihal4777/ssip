@@ -37,10 +37,10 @@ class ApiController extends Controller
             foreach($request->item as $i=>$item)
             {
                 $cons=new Consumption(['item_id'=>$item,'qnt'=>$request->qnt[$i],'center_id'=>$request->center_id,'date'=>now()]);
-                // $cons->save();
+                $cons->save();
                 $stock=Stock::where(['item_id'=>$item,'center_id'=>$request->center_id,])->first();
                 $stock->qnt-=$request->qnt[$i];
-                // $stock->save();
+                $stock->save();
             }
         if (!file_exists('documents')) {
             mkdir('documents', 666, true);
@@ -49,12 +49,12 @@ class ApiController extends Controller
             foreach($request->documents as $file)
             {
                 $filename='documents/'.time().'_'.$file->getClientOriginalName();
-                // $file->move(public_path('documents'),$filename);
+                $file->move(public_path('documents'),$filename);
                 $cd=new ConsumptionDocument;
                 $cd->date=date('Y-m-d');
                 $cd->center_id=$user->center_id;
                 $cd->file=$filename;
-                // $cd->save();
+                $cd->save();
             }
         return response()->json(['status'=>'success','message'=>'Consumption details entered successfully']);
     }
