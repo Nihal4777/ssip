@@ -66,6 +66,7 @@
           font-size: 25px;
           border: none;
           background-color: green;
+          overflow:hidden;
         }
        
 .actives
