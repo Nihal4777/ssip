@@ -18,6 +18,8 @@ class DeliveriesController extends Controller
      */
     public function index()
     {
+        /* ----------------------------- Teacher -> Past Deliveries ---------------------------- */
+
         $user=auth()->user();
         if($user->role('teacher'))
         {
@@ -78,6 +80,19 @@ class DeliveriesController extends Controller
         }
        return redirect('deliveries');
     }
+
+
+    public function pending()
+    {
+        $deliveries=DB::table('grants as g')->whereRaw('g.fulfilled<g.qnt')->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->join('centers as cent','g.center_id','cent.id')->get(['g.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','qnt','fulfilled','cent.center_name as center_name']);
+        return view('supplier',compact('deliveries'));
+    }
+    public function done()
+    {
+        $deliveries=DB::table('deliveries as d')->join('grants as g','d.grant_id','g.id')->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->join('centers as cent','d.center_id','cent.id')->get(['d.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','d.qnt as qnt','fulfilled','g.id as gid']);
+        return view('supplierdone',compact('deliveries'));
+    }
+
 
     /**
      * Display the specified resource.

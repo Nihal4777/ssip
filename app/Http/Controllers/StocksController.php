@@ -127,10 +127,4 @@ class StocksController extends Controller
     {
         //
     }
-
-    public function pending()
-    {
-        $Pstocks=Stock::where(['status'=>0])->get();
-        return view('supplier',compact('Pstocks'));
-    }
 }

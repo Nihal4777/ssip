@@ -343,7 +343,43 @@
 
   </aside><!-- End Sidebar-->
   @endrole
+  @role('supplier')
+  <aside id="sidebar" class="sidebar">
 
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item Home">
+        <a class="nav-link collapsed" href="users-profile.html">
+          <i class="bi bi-house"></i>
+          <span>Home</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item Deliveries">
+        <a class="nav-link collapsed" href="/supplier/pending">
+          <i class="bi bi-pin-map-fill"></i>
+          <span>Pending Deliveries</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item Deliveries">
+        <a class="nav-link collapsed" href="/supplier/fulfilled">
+          <i class="bi bi-check-lg"></i>
+          <span>Past Deliveries</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/logout">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>logout</span>
+        </a>
+      </li><!-- End Error 404 Page Nav -->
+
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+  @endrole
 
 
 

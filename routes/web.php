@@ -28,13 +28,16 @@ Route::get("dashboard",[Controller::class,'dashboard'])->name('dashboard');
 
 
 
-Route::get("supplier/pending",[StocksController::class,'pending']);
-Route::get("supplier/done",[StocksController::class,'done']);
+
 Route::post("login",[AuthController::class,'login_attempt']);
 Route::get("logout",[AuthController::class,'logout']);
 
 
-
+Route::group(['middleware'=>["auth","role:supplier"]],function() {
+    // Route::resource("deliveries",DeliveriesController::class);
+    Route::get("supplier/pending",[DeliveriesController::class,'pending']);
+    Route::get("supplier/fulfilled",[DeliveriesController::class,'done']);
+});
 
 
 Route::group(['middleware'=>["auth","role:teacher"]],function() {

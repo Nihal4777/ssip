@@ -29,7 +29,7 @@ class Controller extends BaseController
     public function assigned()
     {
 
-        $Pstocks=DB::table('grants as g')->where(['center_id'=>auth()->user()->center_id,])->whereRaw('g.fulfilled<g.qnt')->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->get(['g.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','qnt','fulfilled']);
+        $Pstocks=DB::table('grants as g')->where(['center_id'=>auth()->user()->center_id,])->whereRaw('g.fulfilled<g.qnt')->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->join('centers as cent','g.center_id','cent.id')->get(['g.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','qnt','fulfilled','center_id']);
         // $Dstocks=Grant::where(['status'=>1,'center_id'=>auth()->user()->center_id])->get();
         return view('assigned',compact('Pstocks'));
     }
