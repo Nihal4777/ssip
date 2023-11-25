@@ -102,6 +102,8 @@ class GrantsController extends Controller
      */
     public function destroy(Grant $grant)
     {
-        //
+        $grant->delete();
+        session('success','Grant Revoked Successfully');
+        return response()->json(['status'=>true]);
     }
 }

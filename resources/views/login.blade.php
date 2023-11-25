@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style>
 body {
@@ -88,7 +89,7 @@ input[type="password"] {
     border-radius: 5px;
 }
 
-button {
+#login-button {
     background-color: rgb(100,0,3,0.9);
     color: white;
     padding: 10px 20px;
@@ -99,7 +100,6 @@ button {
     letter-spacing:1px;
     transition: background-color 0.3s;
 }
-
 button:hover {
     background-color: #45a049;
 }
@@ -165,13 +165,16 @@ input:focus
         margin:2px auto;
         box-shadow:0px 0px 5px  rgba(0, 0, 0, 0.177);
     }
+    #fg{
+          color: rgb(100,0,3,0.9);
+    }   
     label
     {
         color: rgb(100,0,0);
         letter-spacing:1px;
         font-size:16px;
     }
-    button
+    #login-button
     {
         width:50%;
         font-size:20px;
@@ -216,12 +219,13 @@ input:focus
             <div class="input-group">
                 <label for="username">Username:</label>
                 <input type="text" id="email" name="email" required>
+                <button type="button" class="btn btn-link ms-auto" id="fg">Get OTP</button>
             </div>
             <div class="input-group">
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" id="login-button">Login</button>
             <div class="extra-links">
                 <a href="#forgot-password">Forgot Password?</a>
                 <span>|</span>

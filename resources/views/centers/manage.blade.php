@@ -34,10 +34,8 @@
             <span style="margin: auto 5%;">
               {{-- <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
                 data-bs-target="#verticalycentetomato"> <i class="bi bi-clock-history"></i> History</button></span> --}}
-            <button type="submit" class="btn btn-primary" style="font-size:20px;" data-bs-toggle="modal"
-                data-bs-target="#verticalycentetomato"> <i class="ri ri-mail-send-fill"></i> </button>
-              <button type="submit" class="btn " style="background-color: rgb(35, 187, 35);color:white;font-size:20px;" data-bs-toggle="modal"
-                data-bs-target="#verticalycentetomato"> <i class="ri ri-whatsapp-fill"></i> </button></span> 
+            <a href="mailto:{{$user->email}}" class="btn btn-primary" style="font-size:20px;"> <i class="ri ri-mail-send-fill"></i> </a>
+              <a href="https://api.whatsapp.com/send/?phone=91{{$center->phone}}" class="btn" style="background-color: rgb(35, 187, 35);color:white;font-size:20px;" target="_blank"> <i class="ri ri-whatsapp-fill"></i> </a></span> 
           </li>
         </ul><!-- End List group With Icons -->
       </div>
@@ -93,7 +91,7 @@
       </ul>
     </nav>
     <!-- End Table with hoverable rows -->
-    <div class="container-resp table-responsive dt-responsive">
+    {{-- <div class="container-resp table-responsive dt-responsive">
       <h5 class="card-title"> <i class="bi bi-cart-check-fill"></i> Invoices</h5>
       <!-- Table with hoverable rows -->
       <table class="general-table">
@@ -130,7 +128,7 @@
       <td><button type="submit" class="btn btn-primary" data-bs-toggle="modal"
         data-bs-target="#grandModal"> Grant </button></td>
 
-    </div>
+    </div> --}}
 
     <!--Invoice---------  -->
      <div class="container-resp table-responsive dt-responsive">
@@ -148,6 +146,7 @@
               <th scope="col">Fulfilled</th>
               <th scope="col">Date</th>
               <th scope="col"></th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -161,6 +160,9 @@
                 <td>{{$g->fulfilled}}</td>
                 <td>{{$g->created_at}}</td>
                 <td>Pending</td>
+                <td><button href="" class='btn waves-effect waves-light btn-danger icon-btn btn-icon bs-tooltip revoke_btn rspbtn' title="Delete" data-id="{{$g->id}}">
+                  <i class='bi bi-backspace-reverse'></i> Revoke
+              </button></td>
               </tr>
               @endforeach
 
@@ -300,4 +302,35 @@
           });
       });
   </script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    $('main').on('click','.revoke_btn',function(e){
+            id=$(e.currentTarget).data('id');
+            swal({
+                title: "Are you sure?",
+                text: "Are you sure you want to revoke grant, you will not be able to recover this!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            method:'DELETE',
+                            url:"/grants/"+id+'?_token={{csrf_token()}}',
+                            success:function(res){
+                                if(res.status==true)
+                                {
+                                   window.location.reload();
+                                }
+                            }
+                        });
+                    }
+                }).catch(function (error) 
+                {
+                    swal("Could not change", error.statusText, "error"); 
+                });;
+        });
+  </script>
   @endpush
+  

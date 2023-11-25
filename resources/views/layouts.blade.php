@@ -56,9 +56,9 @@
           margin: 10px 50px;
         }
         #google_translate_element span
-      {
-        display: none;
-      }
+        {
+          display: none;
+        }
         .redbutton
         {
           z-index: 1;
