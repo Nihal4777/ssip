@@ -32,6 +32,8 @@
   <link href="/assets/css/style.css" rel="stylesheet">
   <link href="/assets/css/responsive.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/fonts/icofont.css">
+     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit">
   <style>
         #google_translate_element {
             margin: auto;
@@ -258,15 +260,6 @@
                 </div>
                 <div class="modal-body">
                 <div id="google_translate_element"></div>
-
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-            { pageLanguage: 'en' },
-            'google_translate_element'
-        );
-    }
-</script>
                 </div>
                 <div class="modal-footer">
                   <button type="submit" class="btn btn-primary" form="this">Apply Now</button>
@@ -504,7 +497,14 @@
   <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="/assets/vendor/php-email-form/validate.js"></script>
-
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { pageLanguage: 'en' },
+            'google_translate_element'
+        );
+    }
+</script>
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
   @stack("scripts")
