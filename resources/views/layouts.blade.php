@@ -9,6 +9,8 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  
+
   <!-- Favicons -->
   <link href="/assets/img/favicon.png" rel="icon">
   <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -32,36 +34,30 @@
   <link href="/assets/css/style.css" rel="stylesheet">
   <link href="/assets/css/responsive.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/fonts/icofont.css">
-     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
-cb=googleTranslateElementInit"></script>
   <style>
-        #google_translate_element {
+     #google_translate_element {
             margin: auto;
             width: 100%;
             padding: 10px;
             text-align: center;
-            overflow:hidden;
             
         }
         #google_translate_element .goog-te-combo
         {
           width: 80%;
           margin: 2% auto;
-        overflow:hidden;
           
         }
         #google_translate_element select
         {
           height: 30px;
           margin: 10px 50px;
-            disply:block;
-            overflow:hidden;
         }
         #google_translate_element span
       {
         display: none;
       }
-        .translate
+        .redbutton
         {
           z-index: 1;
           right:0;
@@ -72,7 +68,6 @@ cb=googleTranslateElementInit"></script>
           font-size: 25px;
           border: none;
           background-color: green;
-          overflow:hidden;
         }
        
 .actives
@@ -86,13 +81,14 @@ cb=googleTranslateElementInit"></script>
 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
-
+    
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="/assets/img/logo_new.png" alt="AanganStore">
         <span class="d-none d-lg-block">AanganStore</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
+      
     </div><!-- End Logo -->
 
     <div class="search-bar">
@@ -234,7 +230,7 @@ cb=googleTranslateElementInit"></script>
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="/logout>
+              <a class="dropdown-item d-flex align-items-center" href="#">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -247,9 +243,9 @@ cb=googleTranslateElementInit"></script>
     </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->
- 
+  
   <!-- Translate Button -->
-  <button type="submit" class="btn btn-primary translate"data-bs-toggle="modal" data-bs-target="#verticalycentered"> <i class="bi bi-translate"></i></button>
+  <button type="submit" class="btn btn-primary redbutton"data-bs-toggle="modal" data-bs-target="#verticalycentered"> <i class="bi bi-translate"></i></button>
         <!-- Modal -->
         <div class="modal fade" id="verticalycentered" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
@@ -260,6 +256,15 @@ cb=googleTranslateElementInit"></script>
                 </div>
                 <div class="modal-body">
                 <div id="google_translate_element"></div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { pageLanguage: 'en' },
+            'google_translate_element'
+        );
+    }
+</script>
                 </div>
                 <div class="modal-footer">
                   <button type="submit" class="btn btn-primary" form="this">Apply Now</button>
@@ -278,7 +283,7 @@ cb=googleTranslateElementInit"></script>
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/">
+        <a class="nav-link collapsed" href="/dashboard">
           <i class="bi bi-house"></i>
           <span>Home</span>
         </a>
@@ -294,11 +299,12 @@ cb=googleTranslateElementInit"></script>
               <i class="bi bi-circle"></i><span>Aanganwadis</span>
             </a>
           </li>
-          {{-- <li class="Suppliers">
+        
+          <li class="Suppliers">
             <a href="/items">
               <i class="bi bi-circle"></i><span>Suppliers</span>
             </a>
-          </li> --}}
+          </li>
           <li class="Categories">
             <a href="/categories">
               <i class="bi bi-circle"></i><span>Categories</span>
@@ -310,19 +316,19 @@ cb=googleTranslateElementInit"></script>
             </a>
           </li>
 
-{{--          
+         
           <li class="Invoices">
             <a href="/reports">
               <i class="bi bi-circle"></i><span>Reports</span>
             </a>
-          </li> --}}
+          </li>
         </ul>
       </li>
 
       <li class="nav-item Consumption">
-        <a class="nav-link collapsed" href="/reports">
+        <a class="nav-link collapsed" href="pages-register.html">
           <i class="bi bi-card-list"></i>
-          <span>Reports</span>
+          <span>Consumption</span>
         </a>
       </li><!-- End Register Page Nav -->
 
@@ -392,48 +398,6 @@ cb=googleTranslateElementInit"></script>
           <span>Past Deliveries</span>
         </a>
       </li><!-- End Profile Page Nav -->
-      {{-- <li class="nav-item Consumption">
-        <a class="nav-link collapsed" href="/consumption/reports">
-          <i class="bi bi-card-list"></i>
-          <span>Consumption Report</span>
-        </a>
-      </li><!-- End Register Page Nav --> --}}
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/logout">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>logout</span>
-        </a>
-      </li><!-- End Error 404 Page Nav -->
-
-
-    </ul>
-
-  </aside><!-- End Sidebar-->
-  @endrole
-  @role('supplier')
-  <aside id="sidebar" class="sidebar">
-
-    <ul class="sidebar-nav" id="sidebar-nav">
-      <li class="nav-item Home">
-        <a class="nav-link collapsed" href="users-profile.html">
-          <i class="bi bi-house"></i>
-          <span>Home</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item Deliveries">
-        <a class="nav-link collapsed" href="/supplier/pending">
-          <i class="bi bi-pin-map-fill"></i>
-          <span>Pending Deliveries</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item Deliveries">
-        <a class="nav-link collapsed" href="/supplier/fulfilled">
-          <i class="bi bi-check-lg"></i>
-          <span>Past Deliveries</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="/logout">
@@ -447,6 +411,7 @@ cb=googleTranslateElementInit"></script>
 
   </aside><!-- End Sidebar-->
   @endrole
+
 
 
 
@@ -497,14 +462,8 @@ cb=googleTranslateElementInit"></script>
   <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="/assets/vendor/php-email-form/validate.js"></script>
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-            { pageLanguage: 'en' },
-            'google_translate_element'
-        );
-    }
-</script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit"></script>
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
   @stack("scripts")
