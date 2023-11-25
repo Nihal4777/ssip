@@ -335,7 +335,7 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item Home">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="/">
           <i class="bi bi-house"></i>
           <span>Home</span>
         </a>
