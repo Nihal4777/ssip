@@ -56,10 +56,10 @@
           margin: 10px 50px;
         }
         #google_translate_element span
-        {
-          display: none;
-        }
-        .redbutton
+      {
+        display: none;
+      }
+        .Translate
         {
           z-index: 1;
           right:0;
@@ -240,7 +240,7 @@
   </header><!-- End Header -->
   
   <!-- Translate Button -->
-  <button type="submit" class="btn btn-primary redbutton"data-bs-toggle="modal" data-bs-target="#verticalycentered"> <i class="bi bi-translate"></i></button>
+  <button type="submit" class="btn btn-primary Translate"data-bs-toggle="modal" data-bs-target="#verticalycentered"> <i class="bi bi-translate"></i></button>
         <!-- Modal -->
         <div class="modal fade" id="verticalycentered" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
