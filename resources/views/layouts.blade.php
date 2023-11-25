@@ -33,6 +33,41 @@
   <link href="/assets/css/responsive.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/fonts/icofont.css">
   <style>
+        #google_translate_element {
+            margin: auto;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            
+        }
+        #google_translate_element .goog-te-combo
+        {
+          width: 80%;
+          margin: 2% auto;
+          
+        }
+        #google_translate_element select
+        {
+          height: 30px;
+          margin: 10px 50px;
+        }
+        #google_translate_element span
+      {
+        display: none;
+      }
+        .redbutton
+        {
+          z-index: 1;
+          right:0;
+          bottom: 0;
+          margin: 30px;
+          position: fixed;
+          border-radius: 50%;
+          font-size: 25px;
+          border: none;
+          background-color: green;
+        }
+       
 .actives
 {
   color:#F05454;
@@ -206,6 +241,36 @@
 
   </header><!-- End Header -->
  
+  <!-- Translate Button -->
+  <button type="submit" class="btn btn-primary redbutton"data-bs-toggle="modal" data-bs-target="#verticalycentered"> <i class="bi bi-translate"></i></button>
+        <!-- Modal -->
+        <div class="modal fade" id="verticalycentered" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Translate Another Language</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <div id="google_translate_element"></div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { pageLanguage: 'en' },
+            'google_translate_element'
+        );
+    }
+</script>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary" form="this">Apply Now</button>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Vertically centered Modal-->
+        
+
   @role("admin")
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
