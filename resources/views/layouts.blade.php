@@ -409,7 +409,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="/supplier/pending">
           <i class="bi bi-house"></i>
-          <span>Fulfilled Deliveries</span>
+          <span>Pending Deliveries</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
