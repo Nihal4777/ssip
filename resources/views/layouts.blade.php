@@ -38,18 +38,22 @@
             width: 100%;
             padding: 10px;
             text-align: center;
+            overflow:hidden;
             
         }
         #google_translate_element .goog-te-combo
         {
           width: 80%;
           margin: 2% auto;
+        overflow:hidden;
           
         }
         #google_translate_element select
         {
           height: 30px;
           margin: 10px 50px;
+            disply:block;
+            overflow:hidden;
         }
         #google_translate_element span
       {
