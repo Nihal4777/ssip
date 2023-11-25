@@ -25,8 +25,8 @@
         <div class="card-body">
           <h5 class="card-title"><i class="ri-filter-off-line"></i>  Search Anganwadi</h5>
     
-          <!-- Browser Default Validation -->
-          <form class="row g-3">
+           Browser Default Validation -->
+          {{-- <form class="row g-3">
             <div class="col-md-4">
               <label for="validationDefault01" class="form-label">name or center </label>
               <input type="text" class="form-control" id="validationDefault01"  required>
@@ -51,8 +51,7 @@
               </div>
           </form>
         </div>
-</div>
-    -->
+</div> --}}
     <div class="addbutton card-body" style="margin: 20px auto;">
          <!-- Button trigger modal -->    
          
