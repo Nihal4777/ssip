@@ -21,7 +21,7 @@
   }
   </style>
 
-     <div class="">
+<!--      <div class="">
         <div class="card-body">
           <h5 class="card-title"><i class="ri-filter-off-line"></i>  Search Anganwadi</h5>
     
@@ -52,11 +52,11 @@
           </form>
         </div>
 </div>
-   
+    -->
     <div class="addbutton card-body" style="margin: 20px auto;">
          <!-- Button trigger modal -->    
          
-        <button type="submit" class="btn btn-primary redbutton"data-bs-toggle="modal" data-bs-target="#verticalycentered"> <i class="bx bxs-plus-circle"></i>  Add Anganwadi</button>
+        <button type="submit" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#verticalycentered"> <i class="bx bxs-plus-circle"></i>  Add Anganwadi</button>
         <!-- Modal -->
         <div class="modal fade" id="verticalycentered" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
