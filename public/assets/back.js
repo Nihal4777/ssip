@@ -24,7 +24,7 @@ $('#recordButton').click(function(){
 });
 function startRecording() {
 	console.log("recordButton clicked");
-
+	$('#recordButton').text('Recording');
 	/*
 		Simple constraints object, for more advanced audio features see
 		https://addpipe.com/blog/audio-constraints-getusermedia/
@@ -86,6 +86,7 @@ function startRecording() {
 
 
 function stopRecording() {
+	$('#recordButton').text('Voice Record');
 	console.log("stopButton clicked");
 
 	// //disable the stop button, enable the record too allow for new recordings
