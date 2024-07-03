@@ -2,13 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OTP;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
     private $pwd;
+    public function getOtp(Request $request)
+    {
+        $user=User::where('email',$request->email)->first();
+        $pwd=rand(100000, 999999);
+        Mail::to($user)->send(new OTP($user->email,$this->pwd));
+    }
     public function spaAuth(Request $request){
         $request->validate([
         'email'=>'required|email',

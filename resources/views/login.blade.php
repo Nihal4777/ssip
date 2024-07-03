@@ -218,7 +218,7 @@ input:focus
             {{ csrf_field() }}
             <div class="input-group">
                 <label for="username">Username:</label>
-                <input type="text" id="email" name="email" required>
+                <input type="text" id="email" name="email" id="email" required>
                 <button type="button" class="btn btn-link ms-auto" id="fg">Get OTP</button>
             </div>
             <div class="input-group">
@@ -235,9 +235,25 @@ input:focus
     </div>
     </div>
     <script>
-        document.getElementById("login-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the form from submitting (for demonstration purposes)
-            // Your login logic here
+        var email=document.getElementById("email")
+        document.getElementById("fg").addEventListener("click", function(event) {
+            event.preventDefault(); 
+            var xhr=new XMLHttpRequest();
+		  xhr.onload=function(e) {
+		      if(this.readyState === 4) {
+		          console.log("Server returned: ",e.target.responseText);
+		      }
+		  };
+		  xhr.open("GET",`getOTP?email=${email.value}`,true);
+		  xhr.send();
+		  xhr.onload = () => {
+			console.log("DONE", xhr.readyState); // readyState will be 4
+			if (xhr.status === 200) {
+				console.log(xhr.response);
+				console.log(xhr.responseText);
+			  }
+		  };
+
         });
     </script>
 </body>

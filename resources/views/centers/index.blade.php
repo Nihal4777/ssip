@@ -27,7 +27,7 @@
         <button type="submit" class="btn btn-primary redbutton" data-bs-toggle="modal" data-bs-target="#addAanganwadi"> <i class="bx bxs-plus-circle"></i>  Add Anganwadi</button>
         <!-- Modal -->
         <div class="modal fade" id="addAanganwadi" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered" data-bs-target="#grandModal" data-bs-toggle="modal">
+            <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title">Add AnganWadi</h5>
@@ -127,7 +127,7 @@
 
       <table class="general-table" id="myTable">
         <!-- Modal -->
-        <div class="modal fade" id="modalopen" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true">
+        {{-- <div class="modal fade" id="modalopen" tabindex="-1" aria-labelledby="modalopenLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -150,7 +150,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
         <thead class="table-heading">
           <tr style="height: 50px;">
             <th scope="col" style="padding:5px;"><div class="form-check">
