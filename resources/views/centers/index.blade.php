@@ -27,7 +27,7 @@
         <button type="submit" class="btn btn-primary redbutton" data-bs-toggle="modal" data-bs-target="#addAanganwadi"> <i class="bx bxs-plus-circle"></i>  Add Anganwadi</button>
         <!-- Modal -->
         <div class="modal fade" id="addAanganwadi" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered" data-bs-target="#grandModal" data-bs-toggle="modal">
+            <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title">Add AnganWadi</h5>
@@ -266,6 +266,8 @@
 @endsection
 @push("scripts")
 <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://de-sem6.ethiccraft.com/assets/js/datatables/datatables.bootstrap4.min.js"></script>
+<script src="https://de-sem6.ethiccraft.com/assets/js/datatables/datatables.responsive.min.js"></script>
   <script type="text/javascript">
 
   function updateCode(e){

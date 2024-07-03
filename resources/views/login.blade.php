@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-{{-- <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --}}
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <style>
 body {
@@ -26,7 +26,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.container {
+.cont {
     position: relative;
     display: flex;
     align-items: center;
@@ -48,7 +48,7 @@ body {
     vertical-align: middle;
 }
 
-.login-container {
+.login-cont {
     display:inline-block;
     background-color: #eacda3a5;
     padding: 40px;
@@ -100,7 +100,7 @@ input[type="password"] {
     letter-spacing:1px;
     transition: background-color 0.3s;
 }
-button:hover {
+#login-button:hover {
     background-color: #45a049;
 }
 
@@ -136,7 +136,7 @@ input:focus
         background: linear-gradient(to left, #d6ae7b, #eacda3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         font-family: 'Roboto', sans-serif;
     }
-    .container
+    .cont
     {
         height:100%;
         width:100%;
@@ -158,7 +158,7 @@ input:focus
     {
         display:none;
     }
-    .login-container 
+    .login-cont 
     {
         text-align:center;
         padding:30px;
@@ -195,18 +195,16 @@ input:focus
 </style>
 
 <body>
-    <div class="container">
+    <div class="cont">
         <div class="in">
         <div class="image left">
             <img src="/assets/img/aangawadir.png" alt="Left Image">
         </div>
-    <div class="login-container">
+    <div class="login-cont">
         <h2>Login</h2>
         @if ($errors->any())
     <div class="alert alert-danger solid alert-dismissible fade show mt-3">
-        {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
-            <span aria-hidden="true">×</span>
-        </button> --}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <ul class="mb-0 pl-3">
             @foreach ($errors->all() as $error)
                 <li>{!! $error !!}</li>
@@ -219,7 +217,7 @@ input:focus
             <div class="input-group">
                 <label for="username">Username:</label>
                 <input type="text" id="email" name="email" required>
-                <button type="button" class="btn btn-link ms-auto" id="fg">Get OTP</button>
+                <!--<button type="button" class="btn btn-link ms-auto" id="fg">Get OTP</button>-->
             </div>
             <div class="input-group">
                 <label for="password">Password:</label>
@@ -227,13 +225,14 @@ input:focus
             </div>
             <button type="submit" id="login-button">Login</button>
             <div class="extra-links">
-                <a href="#forgot-password">Forgot Password?</a>
-                <span>|</span>
-                <a href="signup.html">Sign Up</a>
+                <!--<a href="#forgot-password">Forgot Password?</a>-->
+                <!--<span>|</span>-->
+                <!--<a href="signup.html">Sign Up</a>-->
             </div>
         </form>
     </div>
     </div>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         document.getElementById("login-form").addEventListener("submit", function(event) {
             event.preventDefault(); // Prevent the form from submitting (for demonstration purposes)
