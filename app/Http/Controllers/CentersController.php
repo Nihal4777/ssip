@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Routing\Controller as BaseController;
 class CentersController extends BaseController
 {
@@ -92,12 +93,31 @@ class CentersController extends BaseController
     {
         $user=auth()->user();
         $cat=Categories::all();
-        $date=$request->date;
+        $date=$request->start;   
+        $enddate=$request->end;
         if(empty($date))
+        {
             $date=date('Y-m-d',strtotime('yesterday'));
-        $consumptions=DB::table('consumptions as g')->where(['center_id'=>$id,'date'=>$date])->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->get(['g.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','qnt']);
-        $cds=ConsumptionDocument::where(['center_id'=>$id,'date'=>$date])->get();
-        return view('consumptionhistory',compact('cat','consumptions','date','cds'));
+            $enddate=date('Y-m-d',strtotime('today'));
+        }
+                $consumptions=DB::table('consumptions as g')->where(['center_id'=>$id])->whereBetween('date',[$date,$enddate])->join('items as i','g.item_id','i.id')->join('categories as c','category_id','c.id')->get(['g.id as id','i.name as itemName','c.name as cname','g.created_at as created_at','qnt']);
+        $cds=ConsumptionDocument::where(['center_id'=>$id])->whereBetween('date',[$date,$enddate])->get();
+        if(empty($request->start))
+        {
+            $date=date('m/d/Y',strtotime('yesterday'));
+            $enddate=date('m/d/Y',strtotime('today'));
+        }
+        else{
+            $date=date('m/d/Y',strtotime($request->start));
+            $enddate=date('m/d/Y',strtotime($request->end));
+        }
+        if(!empty($request->gen_report))
+        {
+            $pdf = Pdf::loadView('reports.cons', compact('cat','consumptions','date','cds','enddate'));
+            return $pdf->stream('reports.pdf');
+        }
+        else
+        return view('consumptionhistory',compact('cat','consumptions','date','cds','enddate'));
     }
     public function stock_view(Request $request,$id)
     {

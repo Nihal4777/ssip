@@ -131,7 +131,7 @@
     </div> --}}
 
     <!--Invoice---------  -->
-     <div class="container-resp table-responsive dt-responsive">
+     <div class="container-resp table-responsive dt-responsive" style="width: 100%;">
       <h5 class="card-title"> <i class="bi bi-calculator"></i>Assigned Stocks</h5>
      
       <!-- Table with hoverable rows -->

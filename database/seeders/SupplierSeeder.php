@@ -17,8 +17,8 @@ class SupplierSeeder extends Seeder
     {
         $user=\App\Models\User::create([
             'name' => 'Supplier',
-            'email' => env('SUPP_USERNAME'),
-            'password' => Hash::make(env('SUPP_PASSWORD')),
+            'email' => 'supplier@ssip.com',
+            'password' => Hash::make('1234'),
         ]);
         $user->assignRole('supplier');
     }

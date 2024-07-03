@@ -266,6 +266,8 @@
 @endsection
 @push("scripts")
 <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://de-sem6.ethiccraft.com/assets/js/datatables/datatables.bootstrap4.min.js"></script>
+<script src="https://de-sem6.ethiccraft.com/assets/js/datatables/datatables.responsive.min.js"></script>
   <script type="text/javascript">
 
   function updateCode(e){
